@@ -25,12 +25,20 @@ Create the editor account locally (choose a strong password when prompted):
 
 Sign in at [http://127.0.0.1:8000/admin/](http://127.0.0.1:8000/admin/). The admin provides:
 
-- **Stories:** title, publication, publish date, category, deck, optional article URL, visual treatment, feature state, visibility, and ordering.
+- **Stories:** title, publication, publish date, category, deck, visual treatment, feature state, visibility, and ordering. Paste full text into **Article body** to host and display it on the site; upload a PDF, Word document, or text file for visitors to download; optionally retain an **External publication** URL.
 - **Field notes:** title, publish date, optional destination URL, visibility, and ordering.
 - **Site profile:** editable name, hero copy, bio, beat/location details, public email addresses, footer copy, and an optional headshot upload.
 - **Contact messages:** a private inbox of contact requests and anonymous tips submitted through the public site. Mark entries read once handled.
 
 Only records marked **Published** appear publicly. `sort_order` controls display order (lower numbers appear first). The initial migration adds the three example stories and notes shown in the original design.
+
+### Publishing an article on the site
+
+Create or edit a **Story** in the admin. The story card always opens a public reading page at `/reporting/<slug>/`.
+
+- Paste the article into **Article body** to show it directly on that page. Paragraph breaks are preserved.
+- Upload a PDF, `.doc`, `.docx`, or `.txt` file to **Article file** to offer it as a download.
+- Add an **External publication** URL to keep a link to the original publisher. It appears alongside the hosted article or download.
 
 ## Contact and tips
 

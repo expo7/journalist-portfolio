@@ -1,3 +1,4 @@
+from django.core.validators import FileExtensionValidator
 from django.db import models
 
 
@@ -18,7 +19,19 @@ class Story(models.Model):
     category = models.CharField(max_length=20, choices=Category.choices)
     artwork = models.CharField(max_length=20, choices=Artwork.choices, default=Artwork.HOUSING)
     deck = models.TextField()
-    article_url = models.URLField(blank=True, help_text="Optional link to the published article.")
+    article_body = models.TextField(
+        blank=True,
+        help_text="Optional full article text. Paragraph breaks are preserved on the public reading page.",
+    )
+    article_file = models.FileField(
+        upload_to="articles/",
+        blank=True,
+        validators=[FileExtensionValidator(["pdf", "doc", "docx", "txt"])],
+        help_text="Optional PDF, Word document, or plain-text version of the article.",
+    )
+    article_url = models.URLField(
+        blank=True, help_text="Optional link to the published article at its original publication."
+    )
     is_featured = models.BooleanField(default=False)
     is_published = models.BooleanField(default=True)
     sort_order = models.PositiveSmallIntegerField(default=0)
@@ -28,6 +41,10 @@ class Story(models.Model):
 
     def __str__(self):
         return self.title
+
+    @property
+    def has_hosted_content(self):
+        return bool(self.article_body or self.article_file)
 
 
 class FieldNote(models.Model):

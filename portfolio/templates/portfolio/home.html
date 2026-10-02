@@ -76,7 +76,7 @@
                 {% if story.artwork == "school" %}<span class="folder folder-back"></span><span class="folder folder-front">BUDGET<br />FILES</span><span class="clip"></span>{% endif %}
               </div>
               <div class="story-meta"><span>{{ story.publication }}</span><span>{{ story.published_on|date:"F Y" }}</span></div>
-              <h3><a href="{{ story.article_url|default:'#work' }}"{% if story.article_url %} target="_blank" rel="noopener noreferrer"{% endif %}>{{ story.title }} <span aria-hidden="true">↗</span></a></h3>
+              <h3><a href="{% url 'story_detail' story.slug %}">{{ story.title }} <span aria-hidden="true">→</span></a></h3>
               <p>{{ story.deck }}</p>
             </article>
           {% empty %}
@@ -118,7 +118,7 @@
       </section>
 
       <section id="contact" class="contact section">
-        <div><p class="eyebrow">Contact</p><h2>Have a lead or a question?</h2><p class="contact-intro">Messages go directly to Kandace's private editorial inbox. A tip can be submitted without your name or email.</p></div>
+        <div><p class="eyebrow">Contact</p><h2>Have a lead or a question?</h2><p class="contact-intro">Messages go directly to {{ profile.name }}'s private editorial inbox. A tip can be submitted without your name or email.</p></div>
         <div class="contact-forms">
           {% if messages %}{% for message in messages %}<p class="form-success" role="status">{{ message }}</p>{% endfor %}{% endif %}
           <form method="post" action="{% url 'contact' %}" class="contact-form">

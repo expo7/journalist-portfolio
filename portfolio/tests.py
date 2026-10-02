@@ -49,6 +49,39 @@ class HomeViewTests(TestCase):
 
         self.assertContains(response, "Updated Reporter")
 
+    def test_story_detail_displays_hosted_article_and_publication_link(self):
+        story = Story.objects.create(
+            title="Hosted story",
+            slug="hosted-story",
+            publication="The Ledger",
+            published_on=date(2024, 1, 1),
+            category=Story.Category.INVESTIGATION,
+            deck="A hosted story deck.",
+            article_body="First paragraph.\n\nSecond paragraph.",
+            article_url="https://example.com/original-story",
+        )
+
+        response = self.client.get(reverse("story_detail", args=(story.slug,)))
+
+        self.assertContains(response, "First paragraph.")
+        self.assertContains(response, "Read at The Ledger")
+        self.assertContains(response, story.article_url)
+
+    def test_story_detail_does_not_expose_unpublished_story(self):
+        story = Story.objects.create(
+            title="Draft story",
+            slug="draft-story",
+            publication="The Ledger",
+            published_on=date(2024, 1, 1),
+            category=Story.Category.INVESTIGATION,
+            deck="A draft story deck.",
+            is_published=False,
+        )
+
+        response = self.client.get(reverse("story_detail", args=(story.slug,)))
+
+        self.assertEqual(response.status_code, 404)
+
 
 class AdminTests(TestCase):
     def test_admin_exposes_story_management_to_staff(self):
@@ -61,6 +94,10 @@ class AdminTests(TestCase):
         response = self.client.get(reverse("admin:portfolio_story_changelist"))
 
         self.assertEqual(response.status_code, 200)
+
+        add_response = self.client.get(reverse("admin:portfolio_story_add"))
+        self.assertContains(add_response, 'name="article_body"')
+        self.assertContains(add_response, 'name="article_file"')
 
     def test_admin_exposes_profile_photo_upload_and_message_inbox(self):
         user = get_user_model().objects.create_user("editor", "editor@example.com")

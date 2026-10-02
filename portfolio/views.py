@@ -1,6 +1,6 @@
 from django.contrib import messages
 from django.http import HttpResponseNotAllowed
-from django.shortcuts import redirect, render
+from django.shortcuts import get_object_or_404, redirect, render
 from django.urls import reverse
 
 from .forms import ContactMessageForm
@@ -31,7 +31,7 @@ def contact(request):
     if form.is_valid():
         form.save()
         kind = form.cleaned_data["kind"]
-        message = "Your message has been sent. Kandace will be in touch."
+        message = f"Your message has been sent. {SiteProfile.objects.get(pk=1).name} will be in touch."
         if kind == ContactMessage.Kind.TIP:
             message = "Your tip has been received. Thank you for sharing it."
         messages.success(request, message)
@@ -45,3 +45,15 @@ def contact(request):
     )
     response.status_code = 400
     return response
+
+
+def story_detail(request, slug):
+    story = get_object_or_404(Story.objects.filter(is_published=True), slug=slug)
+    return render(
+        request,
+        "portfolio/story_detail.html",
+        {
+            "story": story,
+            "profile": SiteProfile.objects.get(pk=1),
+        },
+    )

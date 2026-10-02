@@ -11,6 +11,18 @@ class StoryAdmin(admin.ModelAdmin):
     prepopulated_fields = {"slug": ("title",)}
     search_fields = ("title", "publication", "deck")
     ordering = ("sort_order", "-published_on")
+    fieldsets = (
+        ("Publication", {"fields": ("title", "slug", "publication", "published_on", "category", "deck")}),
+        (
+            "Hosted article",
+            {
+                "fields": ("article_body", "article_file"),
+                "description": "Paste the article text, upload a document, or use both. Uploaded documents are linked from the public reading page.",
+            },
+        ),
+        ("External publication", {"fields": ("article_url",)}),
+        ("Presentation", {"fields": ("artwork", "is_featured", "is_published", "sort_order")}),
+    )
 
 
 @admin.register(FieldNote)

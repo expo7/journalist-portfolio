@@ -24,6 +24,7 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     path("", views.home, name="home"),
     path("contact/", views.contact, name="contact"),
+    path("reporting/<slug:slug>/", views.story_detail, name="story_detail"),
 ]
 
 if settings.DEBUG:
