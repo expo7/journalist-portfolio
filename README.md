@@ -1,28 +1,50 @@
 # Candis Hart — Investigative Journalism Portfolio
 
-A responsive, dependency-free portfolio for an investigative journalist. It presents selected reporting, a short professional profile, field-note links, a contact path for tips, and small interactive enhancements.
+A responsive Django portfolio for an investigative journalist. The public site displays reporting and field notes from the database; Django's built-in, password-protected admin lets an editor publish, edit, hide, and reorder that content.
 
-## Run locally
+## Local setup
 
-From the project directory, start a local static server:
+The commands below create an isolated environment, install the application dependency, initialize the local database with the sample portfolio, and start the site:
 
 ```bash
-python3 -m http.server 8000
+python3 -m venv .venv
+.venv/bin/pip install -r requirements.txt
+.venv/bin/python manage.py migrate
+.venv/bin/python manage.py runserver
 ```
 
-Open [http://localhost:8000](http://localhost:8000) in a browser. Stop the server with `Ctrl+C`.
+Open [http://127.0.0.1:8000](http://127.0.0.1:8000) for the public portfolio.
 
-## Main interactions
+## Admin account and content editing
 
-- Filter selected work by investigations or features.
-- Open and close the mobile navigation.
-- Submit the newsletter form to receive an in-page confirmation.
-- Copy the public contact email from the footer.
+Create the editor account locally (choose a strong password when prompted):
 
-The site is deliberately static: newsletter and contact endpoints are presentation-only and do not transmit or store personal data.
+```bash
+.venv/bin/python manage.py createsuperuser
+```
 
-## Structure
+Sign in at [http://127.0.0.1:8000/admin/](http://127.0.0.1:8000/admin/). The admin provides:
 
-- `index.html` — semantic site content and layout
-- `styles.css` — responsive visual design and accessibility styles
-- `script.js` — navigation, filtering, newsletter feedback, and copy-email behavior
+- **Stories:** title, publication, publish date, category, deck, optional article URL, visual treatment, feature state, visibility, and ordering.
+- **Field notes:** title, publish date, optional destination URL, visibility, and ordering.
+
+Only records marked **Published** appear publicly. `sort_order` controls display order (lower numbers appear first). The initial migration adds the three example stories and notes shown in the original design.
+
+## Security and deployment
+
+The local configuration runs with `DJANGO_DEBUG=1`. Before deployment, set `DJANGO_DEBUG=0`, a unique `DJANGO_SECRET_KEY`, and a comma-separated `DJANGO_ALLOWED_HOSTS`; Django refuses to start in non-debug mode without a secret key. Do not commit `.env`, database files, or admin passwords.
+
+## Checks
+
+```bash
+.venv/bin/python manage.py check
+.venv/bin/python manage.py test
+```
+
+## Project layout
+
+- `config/` — Django project configuration and URLs
+- `portfolio/models.py` — editable story and field-note models
+- `portfolio/admin.py` — editorial admin interface
+- `portfolio/templates/portfolio/home.html` — public portfolio template
+- `portfolio/static/portfolio/` — stylesheet and browser interactions

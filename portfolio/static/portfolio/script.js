@@ -28,7 +28,7 @@ filters.forEach((filter) => filter.addEventListener("click", () => {
     if (shouldShow) visible += 1;
   });
 
-  filterMessage.textContent = category === "all" ? "Showing all 3 stories." : `Showing ${visible} ${category}.`;
+  filterMessage.textContent = category === "all" ? `Showing all ${visible} stories.` : `Showing ${visible} ${category}.`;
 }));
 
 newsletterForm.addEventListener("submit", (event) => {

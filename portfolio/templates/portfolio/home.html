@@ -1,3 +1,4 @@
+{% load static %}
 <!doctype html>
 <html lang="en">
   <head>
@@ -5,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="Candis Hart is an investigative journalist reporting on power, people, and the public record." />
     <title>Candis Hart — Investigative Journalist</title>
-    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="{% static 'portfolio/styles.css' %}" />
   </head>
   <body>
     <a class="skip-link" href="#main">Skip to content</a>
@@ -66,24 +67,21 @@
           </div>
         </div>
         <div class="story-grid">
-          <article class="story-card story-featured" data-category="investigations">
-            <div class="story-art art-housing"><span class="art-label">INVESTIGATION</span><span class="building building-a"></span><span class="building building-b"></span><span class="window-grid"></span></div>
-            <div class="story-meta"><span>THE CITY LEDGER</span><span>JUNE 2024</span></div>
-            <h3><a href="#story-housing">The landlords buying a city one block at a time <span aria-hidden="true">↗</span></a></h3>
-            <p>A yearlong examination of shell companies, eviction filings, and the families left searching for a home.</p>
-          </article>
-          <article class="story-card" data-category="features">
-            <div class="story-art art-water"><span class="art-label">FIELD REPORT</span><span class="waterline"></span><span class="sun"></span><span class="wave wave-one"></span><span class="wave wave-two"></span></div>
-            <div class="story-meta"><span>COMMON GROUND</span><span>APRIL 2024</span></div>
-            <h3><a href="#story-water">At the edge of the flood map <span aria-hidden="true">↗</span></a></h3>
-            <p>For one river town, every storm brings a familiar question: stay, rebuild, or leave?</p>
-          </article>
-          <article class="story-card" data-category="investigations">
-            <div class="story-art art-school"><span class="art-label">DOCUMENT REVIEW</span><span class="folder folder-back"></span><span class="folder folder-front">BUDGET<br />FILES</span><span class="clip"></span></div>
-            <div class="story-meta"><span>STATEWATCH</span><span>FEBRUARY 2024</span></div>
-            <h3><a href="#story-school">The quiet cuts inside public schools <span aria-hidden="true">↗</span></a></h3>
-            <p>Thousands of pages of district budgets reveal where resources disappear before they reach classrooms.</p>
-          </article>
+          {% for story in stories %}
+            <article class="story-card {% if story.is_featured %}story-featured{% endif %}" data-category="{{ story.category }}">
+              <div class="story-art art-{{ story.artwork }}">
+                <span class="art-label">{{ story.get_category_display|upper }}</span>
+                {% if story.artwork == "housing" %}<span class="building building-a"></span><span class="building building-b"></span><span class="window-grid"></span>{% endif %}
+                {% if story.artwork == "water" %}<span class="waterline"></span><span class="sun"></span><span class="wave wave-one"></span><span class="wave wave-two"></span>{% endif %}
+                {% if story.artwork == "school" %}<span class="folder folder-back"></span><span class="folder folder-front">BUDGET<br />FILES</span><span class="clip"></span>{% endif %}
+              </div>
+              <div class="story-meta"><span>{{ story.publication }}</span><span>{{ story.published_on|date:"F Y" }}</span></div>
+              <h3><a href="{{ story.article_url|default:'#work' }}"{% if story.article_url %} target="_blank" rel="noopener noreferrer"{% endif %}>{{ story.title }} <span aria-hidden="true">↗</span></a></h3>
+              <p>{{ story.deck }}</p>
+            </article>
+          {% empty %}
+            <p class="empty-state">New reporting is on its way.</p>
+          {% endfor %}
         </div>
         <p id="filter-message" class="filter-message" aria-live="polite"></p>
       </section>
@@ -112,9 +110,11 @@
       <section id="notes" class="notes section">
         <div><p class="eyebrow">From the notebook</p><h2>Field notes, process, and the occasional loose thread.</h2></div>
         <div class="note-list">
-          <a href="#note-foia"><span>01</span><strong>What a public-records request can — and cannot — do</strong><time datetime="2024-05-08">May 08, 2024</time><i aria-hidden="true">→</i></a>
-          <a href="#note-sources"><span>02</span><strong>On earning trust with sources who have every reason to be cautious</strong><time datetime="2024-03-19">Mar 19, 2024</time><i aria-hidden="true">→</i></a>
-          <a href="#note-data"><span>03</span><strong>The spreadsheet is not the story. It is the beginning.</strong><time datetime="2024-01-11">Jan 11, 2024</time><i aria-hidden="true">→</i></a>
+          {% for note in field_notes %}
+            <a href="{{ note.article_url|default:'#notes' }}"{% if note.article_url %} target="_blank" rel="noopener noreferrer"{% endif %}><span>{{ forloop.counter|stringformat:"02d" }}</span><strong>{{ note.title }}</strong><time datetime="{{ note.published_on|date:'Y-m-d' }}">{{ note.published_on|date:"M d, Y" }}</time><i aria-hidden="true">→</i></a>
+          {% empty %}
+            <p class="empty-state">New notes are coming soon.</p>
+          {% endfor %}
         </div>
       </section>
 
@@ -133,6 +133,6 @@
       <div class="footer-links"><a href="mailto:tips@candishart.com">Send a confidential tip ↗</a><a href="mailto:hello@candishart.com">hello@candishart.com</a><button id="copy-email" type="button">Copy email address</button></div>
       <p class="copyright">© <span id="year"></span> Candis Hart</p>
     </footer>
-    <script src="script.js"></script>
+    <script src="{% static 'portfolio/script.js' %}"></script>
   </body>
 </html>
