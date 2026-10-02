@@ -40,6 +40,25 @@ Create or edit a **Story** in the admin. The story card always opens a public re
 - Upload a PDF, `.doc`, `.docx`, or `.txt` file to **Article file** to offer it as a download.
 - Add an **External publication** URL to keep a link to the original publisher. It appears alongside the hosted article or download.
 
+## Editorial content backup and import
+
+`portfolio/fixtures/editorial_content.json` is a portable snapshot of the site profile, stories, and field notes. It deliberately excludes Django users and passwords, contact/tip messages, and uploaded files.
+
+After running migrations on a new server, validate and then import the fixture:
+
+```bash
+.venv/bin/python manage.py import_portfolio_content --dry-run
+.venv/bin/python manage.py import_portfolio_content
+```
+
+The importer is idempotent: it updates the single site profile and matches stories and field notes by slug, so it can be used after the standard seed migrations. To create a newer backup from a local database, export only the editorial models:
+
+```bash
+.venv/bin/python manage.py dumpdata portfolio.siteprofile portfolio.story portfolio.fieldnote --indent 2 --output portfolio/fixtures/editorial_content.json
+```
+
+If the profile or stories use uploaded images/documents, copy the local `media/` directory to the destination media storage separately. Never export or commit `ContactMessage` records, user accounts, passwords, `db.sqlite3`, or `.env` files.
+
 ## Contact and tips
 
 The public **Contact** section posts directly to the Django application and stores each submission in the private **Contact messages** admin inbox. Standard contact requests require a name, email address, and message. Tips can be anonymous; the form intentionally warns visitors not to upload or transmit sensitive documents through the website.

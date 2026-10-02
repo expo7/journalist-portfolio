@@ -1,6 +1,7 @@
 from datetime import date
 
 from django.contrib.auth import get_user_model
+from django.core.management import call_command
 from django.test import TestCase
 from django.urls import reverse
 
@@ -164,3 +165,22 @@ class ContactFormTests(TestCase):
 
         self.assertEqual(response.status_code, 400)
         self.assertFalse(ContactMessage.objects.exists())
+
+
+class ContentImportCommandTests(TestCase):
+    def test_default_fixture_updates_editorial_content_without_messages(self):
+        profile = SiteProfile.objects.get(pk=1)
+        profile.name = "Temporary Name"
+        profile.save()
+        ContactMessage.objects.create(
+            kind=ContactMessage.Kind.TIP,
+            message="This private message must not be replaced by the editorial import.",
+        )
+
+        call_command("import_portfolio_content")
+
+        profile.refresh_from_db()
+        self.assertEqual(profile.name, "Kandace Biaz")
+        self.assertEqual(Story.objects.count(), 3)
+        self.assertEqual(FieldNote.objects.count(), 3)
+        self.assertEqual(ContactMessage.objects.count(), 1)

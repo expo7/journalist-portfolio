@@ -1,0 +1,114 @@
+[
+{
+  "model": "portfolio.siteprofile",
+  "pk": 1,
+  "fields": {
+    "name": "Kandace Biaz",
+    "role": "Independent investigative reporting",
+    "hero_headline": "Follow the",
+    "hero_emphasis": "paper trail.",
+    "intro": "Kandace Biaz reports on the systems that shape daily life: housing, public money, environmental risk, and the people pushing for answers.",
+    "about_heading": "Reporting with care, rigor, and a little persistence.",
+    "bio": "I am an independent journalist based in the Midwest, where I report long-form investigations and narrative features. My work has prompted public hearings, policy changes, and, most importantly, conversations that otherwise might not have happened.\r\n\r\nI believe the best investigations make complicated systems legible — without losing sight of the people living inside them.",
+    "location": "Flagsaff, AZ",
+    "beats": "Housing, Climate, Power, Animal Rights",
+    "contact_email": "hello@kandacebiaz.com",
+    "tip_email": "tips@kandacebiaz.com",
+    "footer_tagline": "Independent journalism for the public interest.",
+    "headshot": ""
+  }
+},
+{
+  "model": "portfolio.story",
+  "pk": 1,
+  "fields": {
+    "title": "The landlords buying a city one block at a time",
+    "slug": "landlords-buying-a-city",
+    "publication": "The City Ledger",
+    "published_on": "2024-06-16",
+    "category": "investigations",
+    "artwork": "housing",
+    "deck": "A yearlong examination of shell companies, eviction filings, and the families left searching for a home.",
+    "article_body": "",
+    "article_file": "",
+    "article_url": "",
+    "is_featured": true,
+    "is_published": true,
+    "sort_order": 1
+  }
+},
+{
+  "model": "portfolio.story",
+  "pk": 2,
+  "fields": {
+    "title": "At the edge of the flood map",
+    "slug": "edge-of-the-flood-map",
+    "publication": "Common Ground",
+    "published_on": "2024-04-01",
+    "category": "features",
+    "artwork": "water",
+    "deck": "For one river town, every storm brings a familiar question: stay, rebuild, or leave?",
+    "article_body": "",
+    "article_file": "",
+    "article_url": "",
+    "is_featured": false,
+    "is_published": true,
+    "sort_order": 2
+  }
+},
+{
+  "model": "portfolio.story",
+  "pk": 3,
+  "fields": {
+    "title": "The quiet cuts inside public schools",
+    "slug": "quiet-cuts-public-schools",
+    "publication": "Statewatch",
+    "published_on": "2024-02-01",
+    "category": "investigations",
+    "artwork": "school",
+    "deck": "Thousands of pages of district budgets reveal where resources disappear before they reach classrooms.",
+    "article_body": "",
+    "article_file": "",
+    "article_url": "",
+    "is_featured": false,
+    "is_published": true,
+    "sort_order": 3
+  }
+},
+{
+  "model": "portfolio.fieldnote",
+  "pk": 1,
+  "fields": {
+    "title": "What a public-records request can — and cannot — do",
+    "slug": "public-records-request",
+    "published_on": "2024-05-08",
+    "article_url": "",
+    "is_published": true,
+    "sort_order": 1
+  }
+},
+{
+  "model": "portfolio.fieldnote",
+  "pk": 2,
+  "fields": {
+    "title": "On earning trust with sources who have every reason to be cautious",
+    "slug": "earning-source-trust",
+    "published_on": "2024-03-19",
+    "article_url": "",
+    "is_published": true,
+    "sort_order": 2
+  }
+},
+{
+  "model": "portfolio.fieldnote",
+  "pk": 3,
+  "fields": {
+    "title": "The spreadsheet is not the story. It is the beginning.",
+    "slug": "spreadsheet-is-the-beginning",
+    "published_on": "2024-01-11",
+    "article_url": "",
+    "is_published": true,
+    "sort_order": 3
+  }
+}
+]
