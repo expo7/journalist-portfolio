@@ -57,10 +57,19 @@ The local configuration runs with `DJANGO_DEBUG=1`. Before deployment, set `DJAN
 .venv/bin/python manage.py test
 ```
 
+## Handoff notes
+
+- The public site is database-driven; run `migrate` before starting it so the seeded profile, stories, and notes are available.
+- `db.sqlite3`, `media/`, `.env`, and `.venv/` are local-only and intentionally ignored. Create a new admin account locally with `createsuperuser`; no account credentials are stored in Git.
+- Existing migrations are additive and must remain in version control. Create a new migration whenever a model changes.
+- The public pages are `home` and `story_detail`; editorial content and incoming messages are administered through Django admin.
+
 ## Project layout
 
 - `config/` — Django project configuration and URLs
-- `portfolio/models.py` — editable story and field-note models
-- `portfolio/admin.py` — editorial admin interface
+- `portfolio/models.py` — editable stories, field notes, site profile, and contact-message models
+- `portfolio/admin.py` — editorial CMS and private message-inbox interface
+- `portfolio/forms.py` and `portfolio/views.py` — public contact/tip submission and page behavior
 - `portfolio/templates/portfolio/home.html` — public portfolio template
+- `portfolio/templates/portfolio/story_detail.html` — hosted article reader
 - `portfolio/static/portfolio/` — stylesheet and browser interactions
