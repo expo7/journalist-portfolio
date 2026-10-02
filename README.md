@@ -1,4 +1,4 @@
-# Candis Hart — Investigative Journalism Portfolio
+# Kandace Biaz — Investigative Journalism Portfolio
 
 A responsive Django portfolio for an investigative journalist. The public site displays reporting and field notes from the database; Django's built-in, password-protected admin lets an editor publish, edit, hide, and reorder that content.
 

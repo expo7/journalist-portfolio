@@ -40,10 +40,10 @@ newsletterForm.addEventListener("submit", (event) => {
 
 copyEmail.addEventListener("click", async () => {
   try {
-    await navigator.clipboard.writeText("hello@candishart.com");
+    await navigator.clipboard.writeText("hello@kandacebiaz.com");
     copyEmail.textContent = "Email copied";
   } catch {
-    copyEmail.textContent = "hello@candishart.com";
+    copyEmail.textContent = "hello@kandacebiaz.com";
   }
 });
 
