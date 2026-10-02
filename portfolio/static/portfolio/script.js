@@ -3,8 +3,6 @@ const nav = document.querySelector(".site-nav");
 const filters = document.querySelectorAll(".filter");
 const stories = document.querySelectorAll(".story-card");
 const filterMessage = document.querySelector("#filter-message");
-const newsletterForm = document.querySelector("#newsletter-form");
-const formMessage = document.querySelector("#form-message");
 const copyEmail = document.querySelector("#copy-email");
 
 navToggle.addEventListener("click", () => {
@@ -31,19 +29,13 @@ filters.forEach((filter) => filter.addEventListener("click", () => {
   filterMessage.textContent = category === "all" ? `Showing all ${visible} stories.` : `Showing ${visible} ${category}.`;
 }));
 
-newsletterForm.addEventListener("submit", (event) => {
-  event.preventDefault();
-  const email = new FormData(newsletterForm).get("email");
-  formMessage.textContent = `Thanks — the next dispatch will go to ${email}.`;
-  newsletterForm.reset();
-});
-
 copyEmail.addEventListener("click", async () => {
+  const email = copyEmail.dataset.email;
   try {
-    await navigator.clipboard.writeText("hello@kandacebiaz.com");
+    await navigator.clipboard.writeText(email);
     copyEmail.textContent = "Email copied";
   } catch {
-    copyEmail.textContent = "hello@kandacebiaz.com";
+    copyEmail.textContent = email;
   }
 });
 

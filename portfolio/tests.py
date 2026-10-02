@@ -4,7 +4,7 @@ from django.contrib.auth import get_user_model
 from django.test import TestCase
 from django.urls import reverse
 
-from .models import FieldNote, Story
+from .models import ContactMessage, FieldNote, SiteProfile, Story
 
 
 class HomeViewTests(TestCase):
@@ -40,12 +40,90 @@ class HomeViewTests(TestCase):
         self.assertNotContains(response, "Draft story")
         self.assertContains(response, "Published note")
 
+    def test_home_displays_editable_profile_content(self):
+        profile = SiteProfile.objects.get(pk=1)
+        profile.name = "Updated Reporter"
+        profile.save()
+
+        response = self.client.get(reverse("home"))
+
+        self.assertContains(response, "Updated Reporter")
+
 
 class AdminTests(TestCase):
     def test_admin_exposes_story_management_to_staff(self):
-        user = get_user_model().objects.create_superuser("editor", "editor@example.com", "test-password")
+        user = get_user_model().objects.create_user("editor", "editor@example.com")
+        user.is_staff = True
+        user.is_superuser = True
+        user.save()
         self.client.force_login(user)
 
         response = self.client.get(reverse("admin:portfolio_story_changelist"))
 
         self.assertEqual(response.status_code, 200)
+
+    def test_admin_exposes_profile_photo_upload_and_message_inbox(self):
+        user = get_user_model().objects.create_user("editor", "editor@example.com")
+        user.is_staff = True
+        user.is_superuser = True
+        user.save()
+        self.client.force_login(user)
+        profile = SiteProfile.objects.get(pk=1)
+
+        profile_response = self.client.get(
+            reverse("admin:portfolio_siteprofile_change", args=(profile.pk,))
+        )
+        inbox_response = self.client.get(reverse("admin:portfolio_contactmessage_changelist"))
+
+        self.assertContains(profile_response, 'name="headshot"')
+        self.assertEqual(inbox_response.status_code, 200)
+
+
+class ContactFormTests(TestCase):
+    def test_contact_form_stores_a_message(self):
+        response = self.client.post(
+            reverse("contact"),
+            {
+                "kind": ContactMessage.Kind.CONTACT,
+                "name": "Reader",
+                "email": "reader@example.com",
+                "message": "I would like to discuss a story idea.",
+                "website": "",
+            },
+        )
+
+        self.assertRedirects(response, f"{reverse('home')}#contact")
+        message = ContactMessage.objects.get()
+        self.assertEqual(message.name, "Reader")
+        self.assertEqual(message.kind, ContactMessage.Kind.CONTACT)
+        self.assertFalse(message.is_read)
+
+    def test_anonymous_tip_can_be_submitted(self):
+        response = self.client.post(
+            reverse("contact"),
+            {
+                "kind": ContactMessage.Kind.TIP,
+                "name": "",
+                "email": "",
+                "message": "Please investigate the contracts awarded last month.",
+                "website": "",
+            },
+        )
+
+        self.assertRedirects(response, f"{reverse('home')}#contact")
+        message = ContactMessage.objects.get()
+        self.assertEqual(message.kind, ContactMessage.Kind.TIP)
+        self.assertEqual(message.name, "")
+
+    def test_contact_form_rejects_honeypot_submissions(self):
+        response = self.client.post(
+            reverse("contact"),
+            {
+                "kind": ContactMessage.Kind.TIP,
+                "message": "Spam message",
+                "website": "https://spam.example",
+            },
+        )
+
+        self.assertEqual(response.status_code, 400)
+        self.assertFalse(ContactMessage.objects.exists())
