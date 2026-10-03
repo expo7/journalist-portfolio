@@ -63,12 +63,18 @@ class FieldNote(models.Model):
 
 
 class SiteProfile(models.Model):
-    name = models.CharField(max_length=100, default="Kandace Biaz")
+    theme = models.CharField(
+        max_length=20,
+        choices=[("original", "Original — Paper Trail"), ("harbor", "Harbor Editorial — Navy & Ivory"), ("rose", "Harbor Rose — Plum & Ivory")],
+        default="original",
+        help_text="Choose the public website style. Save, then refresh the website to compare.",
+    )
+    name = models.CharField(max_length=100, default="Kandace Baez")
     role = models.CharField(max_length=120, default="Independent investigative reporting")
     hero_headline = models.CharField(max_length=100, default="Follow the")
     hero_emphasis = models.CharField(max_length=100, default="paper trail.")
     intro = models.TextField(
-        default="Kandace Biaz reports on the systems that shape daily life: housing, public money, environmental risk, and the people pushing for answers."
+        default="Kandace Baez reports on the systems that shape daily life: housing, public money, environmental risk, and the people pushing for answers."
     )
     about_heading = models.CharField(
         max_length=160, default="Reporting with care, rigor, and a little persistence."

@@ -38,6 +38,7 @@ class FieldNoteAdmin(admin.ModelAdmin):
 @admin.register(SiteProfile)
 class SiteProfileAdmin(admin.ModelAdmin):
     fieldsets = (
+        ("Website style", {"fields": ("theme",)}),
         ("Identity and hero", {"fields": ("name", "role", "hero_headline", "hero_emphasis", "intro")}),
         ("About", {"fields": ("about_heading", "bio", "location", "beats", "headshot")}),
         ("Contact", {"fields": ("contact_email", "tip_email", "footer_tagline")}),

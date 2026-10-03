@@ -1,0 +1,57 @@
+/* Harbor Editorial: an independent magazine, with a maritime signature. */
+:root { --ink:#152e3c; --cream:#f4f1e9; --paper:#fffdf7; --rust:#80612c; --gold:#c9ad72; --olive:#8b9d9e; --line:rgba(21,46,60,.22); }
+body { background:var(--cream); color:var(--ink); }
+.site-header { position:relative; min-height:100px; border-top:5px solid var(--ink); border-bottom:3px double var(--ink); }
+.wordmark { font-family:Georgia,serif; font-weight:400; font-size:1.65rem; letter-spacing:-.045em; }
+.site-nav { font-weight:400; font-size:.75rem; text-transform:uppercase; letter-spacing:.1em; gap:1.6rem; }
+.nav-contact { border-color:var(--line); }
+.hero { min-height:650px; max-width:1500px; margin:auto; padding-block:5rem; grid-template-columns:1.2fr .8fr; gap:5rem; }
+.eyebrow { font-family:monospace; font-size:.68rem; letter-spacing:.16em; font-weight:400; }
+h1 { font-size:clamp(3.6rem,7.7vw,7.6rem); line-height:1; letter-spacing:-.055em; }
+h1 em { color:var(--ink); text-decoration:underline; text-decoration-color:var(--gold); text-decoration-thickness:2px; text-underline-offset:.12em; }
+.intro { font-family:Georgia,serif; font-size:1.2rem; line-height:1.6; max-width:480px; }
+.button { font-weight:500; font-size:.7rem; letter-spacing:.1em; padding:1rem 1.2rem; }
+.text-link { font-weight:500; font-size:.7rem; }
+.harbor-visual { border:1px solid var(--ink); padding:12px; max-width:460px; width:100%; justify-self:end; }
+.harbor-visual svg { display:block; width:100%; height:auto; }
+.harbor-caption { display:flex; justify-content:space-between; gap:1rem; padding:4px 0 13px; font-family:monospace; font-size:.55rem; letter-spacing:.1em; }
+.harbor-bottom { padding:13px 0 3px; }
+.ticker { background:transparent; color:var(--ink); border-block:1px solid var(--line); padding:1rem 0; }
+.ticker-track { animation:none; display:flex; justify-content:center; gap:2.5rem; font-family:monospace; font-weight:400; font-size:.65rem; }
+.ticker-track > :nth-child(n+6) { display:none; }
+.ticker b { color:var(--rust); }
+.section { padding-block:6rem; }
+h2 { font-size:clamp(2.5rem,4.4vw,4.4rem); line-height:1.05; letter-spacing:-.05em; }
+.section-heading { border-bottom:3px double var(--ink); }
+.story-grid { grid-template-columns:1.3fr 1fr 1fr; gap:2.5rem; }
+.story-card { border-bottom:1px solid var(--line); padding-bottom:1.5rem; }
+.story-art { filter:saturate(.4); height:210px; }
+.story-featured .story-art { height:280px; }
+.art-housing { background:#b7c4c5; } .art-water { background:#9dafb6; } .art-school { background:#d8ccb5; }
+.story-meta { font-family:monospace; font-weight:400; font-size:.6rem; letter-spacing:.03em; }
+h3 { line-height:1.16; letter-spacing:-.035em; }
+.story-card p { line-height:1.65; color:#46555c; }
+.statement { background:var(--ink); color:var(--cream); padding-block:6rem; border-block:5px double var(--gold); }
+.statement .eyebrow,.statement .text-link { color:var(--gold); }
+blockquote { font-size:clamp(2.4rem,4.5vw,4.5rem); line-height:1.15; letter-spacing:-.04em; }
+.about-portrait { background:#b7c4c5; } .portrait-caption { background:var(--ink); padding:.7rem; }
+.about-copy > p:not(.eyebrow) { font-family:Georgia,serif; line-height:1.75; }
+.notes { background:#e9e5db; }
+.note-list a { padding-block:1.6rem; }
+.contact { background:var(--ink); } .contact .eyebrow { color:var(--gold); }
+.contact-form .button-dark { background:var(--cream); color:var(--ink); }
+.contact-form .button-dark:hover { background:var(--gold); }
+.contact-form input:focus,.contact-form textarea:focus { outline:2px solid var(--gold); outline-offset:2px; }
+.article-content h1 { line-height:1.05; font-size:clamp(2.8rem,6vw,5.5rem); }
+.article-deck { color:#46555c; line-height:1.5; }
+.site-footer { border-top:3px double var(--ink); }
+@media(max-width:780px) {
+ .site-header { min-height:76px; padding-inline:1.25rem; } .wordmark { font-size:1.35rem; }
+ .site-nav { top:75px; }
+ .hero { grid-template-columns:1fr; gap:3rem; padding:3.5rem 1.25rem; }
+ .hero-actions { flex-wrap:wrap; gap:1.25rem; } .harbor-visual { justify-self:center; max-width:360px; }
+ .section { padding:4rem 1.25rem; } .story-grid { grid-template-columns:1fr; gap:2rem; }
+ .story-art,.story-featured .story-art { height:260px; }
+ .ticker-track { gap:1rem; font-size:.55rem; } .ticker-track > :nth-child(n+4) { display:none; }
+ .harbor-caption { font-size:.48rem; } .statement { padding:4rem 1.25rem; }
+}

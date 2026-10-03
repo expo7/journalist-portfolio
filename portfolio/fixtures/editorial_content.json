@@ -3,11 +3,11 @@
   "model": "portfolio.siteprofile",
   "pk": 1,
   "fields": {
-    "name": "Kandace Biaz",
+    "name": "Kandace Baez",
     "role": "Independent investigative reporting",
     "hero_headline": "Follow the",
     "hero_emphasis": "paper trail.",
-    "intro": "Kandace Biaz reports on the systems that shape daily life: housing, public money, environmental risk, and the people pushing for answers.",
+    "intro": "Kandace Baez reports on the systems that shape daily life: housing, public money, environmental risk, and the people pushing for answers.",
     "about_heading": "Reporting with care, rigor, and a little persistence.",
     "bio": "I am an independent journalist based in the Midwest, where I report long-form investigations and narrative features. My work has prompted public hearings, policy changes, and, most importantly, conversations that otherwise might not have happened.\r\n\r\nI believe the best investigations make complicated systems legible — without losing sight of the people living inside them.",
     "location": "Flagsaff, AZ",

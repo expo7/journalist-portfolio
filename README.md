@@ -1,4 +1,4 @@
-# Kandace Biaz — Investigative Journalism Portfolio
+# Kandace Baez — Investigative Journalism Portfolio
 
 A responsive Django portfolio for an investigative journalist. The public site displays reporting and field notes from the database; Django's built-in, password-protected admin lets an editor manage site content and received messages.
 
@@ -92,3 +92,13 @@ The local configuration runs with `DJANGO_DEBUG=1`. Before deployment, set `DJAN
 - `portfolio/templates/portfolio/home.html` — public portfolio template
 - `portfolio/templates/portfolio/story_detail.html` — hosted article reader
 - `portfolio/static/portfolio/` — stylesheet and browser interactions
+
+
+### Website styles
+In Django admin, open Site profile → Website style. Choose Original — Paper Trail or Harbor Editorial — Navy & Ivory, save, then refresh the public site. The selection applies to the homepage and article pages.
+
+The public page also has a Style selector for instant demo comparisons. It remembers the choice for this browser tab; the admin selection remains the site-wide default. An illustrated cat is shown when no headshot is uploaded.
+
+An Admin link is temporarily visible in the homepage navigation and article header for the demo. Authentication is still required.
+
+Harbor Rose is a third style: warmer ivory, muted plum, and soft rose/brass accents. It is available in both the on-page selector and admin.

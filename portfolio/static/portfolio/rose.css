@@ -1,0 +1,38 @@
+
+/* Harbor Rose: quiet warmth, literary typography, and a plum editorial palette. */
+:root { --ink:#3e303c; --cream:#faf5ee; --paper:#fffcf7; --rust:#87535f; --gold:#d1af94; --olive:#a6aaa0; --line:rgba(62,48,60,.20); }
+.theme-rose .hero-visual { display:none; }
+.site-header { border-top-width:3px; border-bottom-color:var(--line); }
+.wordmark { letter-spacing:-.035em; }
+h1 { font-weight:400; letter-spacing:-.045em; }
+h1 em { color:#87535f; text-decoration-color:#d6b1ae; }
+.hero { gap:4rem; }
+.harbor-visual { border-color:#bba5a3; padding:16px; background:#fffaf4; }
+.harbor-caption { color:#78565f; letter-spacing:.08em; }
+.harbor-visual svg > rect:first-of-type { fill:#51414e; }
+.harbor-visual svg > circle { fill:#e1bfb0; }
+.harbor-visual svg > path:nth-of-type(1) { fill:#efd2bb; opacity:.20; }
+.harbor-visual svg > path:nth-of-type(2) { fill:#fbefe5; }
+.harbor-visual svg > path:nth-of-type(3) { fill:#d1af94; }
+.harbor-visual svg > path:nth-of-type(4) { fill:#51414e; }
+.harbor-visual svg > path:nth-of-type(5) { fill:#362e3b; }
+.harbor-visual svg > path:last-of-type { stroke:#d1af94; }
+h2 { letter-spacing:-.04em; }
+.story-card p,.article-deck { color:#62555e; }
+.story-art { filter:saturate(.45); }
+.art-housing { background:#c7c7b7; }
+.art-water { background:#bcc6c3; }
+.art-school { background:#decabc; }
+.statement { background:#51414e; border-color:#d1af94; }
+.statement .eyebrow,.statement .text-link { color:#e8c5b6; }
+.about-portrait { background:#ddc2b6; }
+.cat-portrait { background:radial-gradient(circle at 50% 42%,#fff5e9 0 30%,transparent 31%),linear-gradient(150deg,#e4c4b8,#c5c9bd); }
+.notes { background:#f0e5df; }
+.contact { background:#3e303c; }
+.contact-form h3,.contact .eyebrow { color:#e8c5b6; }
+.contact-form input:focus,.contact-form textarea:focus { outline-color:#e8c5b6; }
+.contact-form label span,.form-help { color:#e0ced4; }
+.site-footer p,.footer-links button { color:#6b5d66; }
+.nav-contact { border-color:#bba5a3; }
+.button-dark:hover { background:#87535f; }
+@media(max-width:780px) { .hero { gap:3rem; } }

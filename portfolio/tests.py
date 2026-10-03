@@ -180,7 +180,7 @@ class ContentImportCommandTests(TestCase):
         call_command("import_portfolio_content")
 
         profile.refresh_from_db()
-        self.assertEqual(profile.name, "Kandace Biaz")
+        self.assertEqual(profile.name, "Kandace Baez")
         self.assertEqual(Story.objects.count(), 3)
         self.assertEqual(FieldNote.objects.count(), 3)
         self.assertEqual(ContactMessage.objects.count(), 1)
