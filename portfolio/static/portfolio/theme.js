@@ -4,12 +4,14 @@
   const harbor = document.querySelector("#harbor-theme");
   const rose = document.querySelector("#rose-theme");
   const midnight = document.querySelector("#midnight-theme");
-  const themes = ["original", "harbor", "rose", "midnight"];
-  if (!select || !harbor || !rose || !midnight) return;
+  const glow = document.querySelector("#glow-theme");
+  const themes = ["original", "harbor", "rose", "midnight", "glow"];
+  if (!select || !harbor || !rose || !midnight || !glow) return;
   function apply(theme) {
     harbor.disabled = theme === "original";
     rose.disabled = theme !== "rose";
-    midnight.disabled = theme !== "midnight";
+    midnight.disabled = !["midnight", "glow"].includes(theme);
+    glow.disabled = theme !== "glow";
     document.body.classList.remove(...themes.map(item => "theme-" + item));
     document.body.classList.add("theme-" + theme);
     select.value = theme;

@@ -9,12 +9,14 @@
     <link rel="stylesheet" href="{% static 'portfolio/styles.css' %}?v=3" />
     <link id="harbor-theme" rel="stylesheet" href="{% static 'portfolio/harbor.css' %}?v=1" {% if profile.theme == "original" %}disabled{% endif %} />
     <link id="rose-theme" rel="stylesheet" href="{% static 'portfolio/rose.css' %}?v=1" {% if profile.theme != "rose" %}disabled{% endif %} />
-    <link id="midnight-theme" rel="stylesheet" href="{% static 'portfolio/midnight.css' %}?v=1" {% if profile.theme != "midnight" %}disabled{% endif %} />
+    <link id="midnight-theme" rel="stylesheet" href="{% static 'portfolio/midnight.css' %}?v=1" {% if profile.theme != "midnight" and profile.theme != "glow" %}disabled{% endif %} />
+    <link id="glow-theme" rel="stylesheet" href="{% static 'portfolio/glow.css' %}?v=1" {% if profile.theme != "glow" %}disabled{% endif %} />
+    <link rel="stylesheet" href="{% static 'portfolio/forms.css' %}?v=1" />
   </head>
   <body class="theme-{{ profile.theme }}">
     <div class="style-switcher" aria-label="Website style">
       <label for="page-style">Style</label>
-      <select id="page-style"><option value="original" {% if profile.theme == "original" %}selected{% endif %}>Paper Trail</option><option value="harbor" {% if profile.theme == "harbor" %}selected{% endif %}>Harbor Editorial</option><option value="rose" {% if profile.theme == "rose" %}selected{% endif %}>Harbor Rose</option><option value="midnight" {% if profile.theme == "midnight" %}selected{% endif %}>Midnight Blue</option></select>
+      <select id="page-style"><option value="original" {% if profile.theme == "original" %}selected{% endif %}>Paper Trail</option><option value="harbor" {% if profile.theme == "harbor" %}selected{% endif %}>Harbor Editorial</option><option value="rose" {% if profile.theme == "rose" %}selected{% endif %}>Harbor Rose</option><option value="midnight" {% if profile.theme == "midnight" %}selected{% endif %}>Midnight Blue</option><option value="glow" {% if profile.theme == "glow" %}selected{% endif %}>Midnight Glow</option></select>
     </div>
     <a class="skip-link" href="#article">Skip to article</a>
     <header class="site-header">
@@ -42,6 +44,6 @@
       <div class="footer-links"><a href="{% url 'home' %}#contact">Send a message ↓</a><a href="mailto:{{ profile.contact_email }}">{{ profile.contact_email }}</a></div>
       <p class="copyright">© {% now "Y" %} {{ profile.name }}</p>
     </footer>
-    <script src="{% static 'portfolio/theme.js' %}?v=3"></script>
+    <script src="{% static 'portfolio/theme.js' %}?v=5"></script>
   </body>
 </html>

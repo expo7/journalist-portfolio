@@ -73,7 +73,7 @@ class FieldNote(models.Model):
 class SiteProfile(models.Model):
     theme = models.CharField(
         max_length=20,
-        choices=[("original", "Original — Paper Trail"), ("harbor", "Harbor Editorial — Navy & Ivory"), ("rose", "Harbor Rose — Plum & Ivory"), ("midnight", "Midnight — Deep Blue & White")],
+        choices=[("original", "Original — Paper Trail"), ("harbor", "Harbor Editorial — Navy & Ivory"), ("rose", "Harbor Rose — Plum & Ivory"), ("midnight", "Midnight — Deep Blue & White"), ("glow", "Midnight Glow — Soft Navy Gradient")],
         default="original",
         help_text="Choose the public website style. Save, then refresh the website to compare.",
     )

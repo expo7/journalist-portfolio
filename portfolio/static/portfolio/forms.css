@@ -1,0 +1,6 @@
+/* Shared form treatment, loaded after every palette. */
+.contact-form input:not([type="hidden"]),.contact-form textarea { background:#fff; color:#000; border:1px solid #a5b1bf; caret-color:#000; }
+.contact-form input::placeholder,.contact-form textarea::placeholder { color:#535b66; opacity:1; }
+.contact-form .button[type="submit"],.tip-form .button[type="submit"] { background:#183b62; color:#fff; border:1px solid #7295bd; }
+.contact-form .button[type="submit"]:hover,.tip-form .button[type="submit"]:hover { background:#24517f; color:#fff; border-color:#a5c5e9; }
+.contact-form input:focus,.contact-form textarea:focus { outline:3px solid #8ab9ef; outline-offset:2px; }

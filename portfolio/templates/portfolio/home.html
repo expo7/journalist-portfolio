@@ -9,12 +9,14 @@
     <link rel="stylesheet" href="{% static 'portfolio/styles.css' %}?v=3" />
     <link id="harbor-theme" rel="stylesheet" href="{% static 'portfolio/harbor.css' %}?v=1" {% if profile.theme == "original" %}disabled{% endif %} />
     <link id="rose-theme" rel="stylesheet" href="{% static 'portfolio/rose.css' %}?v=1" {% if profile.theme != "rose" %}disabled{% endif %} />
-    <link id="midnight-theme" rel="stylesheet" href="{% static 'portfolio/midnight.css' %}?v=1" {% if profile.theme != "midnight" %}disabled{% endif %} />
+    <link id="midnight-theme" rel="stylesheet" href="{% static 'portfolio/midnight.css' %}?v=1" {% if profile.theme != "midnight" and profile.theme != "glow" %}disabled{% endif %} />
+    <link id="glow-theme" rel="stylesheet" href="{% static 'portfolio/glow.css' %}?v=1" {% if profile.theme != "glow" %}disabled{% endif %} />
+    <link rel="stylesheet" href="{% static 'portfolio/forms.css' %}?v=1" />
   </head>
   <body class="theme-{{ profile.theme }} hero-art-{{ profile.hero_art }}">
     <div class="style-switcher" aria-label="Website style">
       <label for="page-style">Style</label>
-      <select id="page-style"><option value="original" {% if profile.theme == "original" %}selected{% endif %}>Paper Trail</option><option value="harbor" {% if profile.theme == "harbor" %}selected{% endif %}>Harbor Editorial</option><option value="rose" {% if profile.theme == "rose" %}selected{% endif %}>Harbor Rose</option><option value="midnight" {% if profile.theme == "midnight" %}selected{% endif %}>Midnight Blue</option></select>
+      <select id="page-style"><option value="original" {% if profile.theme == "original" %}selected{% endif %}>Paper Trail</option><option value="harbor" {% if profile.theme == "harbor" %}selected{% endif %}>Harbor Editorial</option><option value="rose" {% if profile.theme == "rose" %}selected{% endif %}>Harbor Rose</option><option value="midnight" {% if profile.theme == "midnight" %}selected{% endif %}>Midnight Blue</option><option value="glow" {% if profile.theme == "glow" %}selected{% endif %}>Midnight Glow</option></select>
       <label for="hero-art">Hero image</label><select id="hero-art"><option value="lighthouse" {% if profile.hero_art == "lighthouse" %}selected{% endif %}>Lighthouse</option><option value="corkboard" {% if profile.hero_art == "corkboard" %}selected{% endif %}>Corkboard</option></select>
     </div>
     <a class="skip-link" href="#main">Skip to content</a>
@@ -180,6 +182,6 @@
       <p class="copyright">© <span id="year"></span> {{ profile.name }}</p>
     </footer>
     <script src="{% static 'portfolio/script.js' %}?v=2"></script>
-    <script src="{% static 'portfolio/theme.js' %}?v=4"></script>
+    <script src="{% static 'portfolio/theme.js' %}?v=5"></script>
   </body>
 </html>
