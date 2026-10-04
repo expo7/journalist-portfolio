@@ -82,6 +82,7 @@ class SiteProfile(models.Model):
     show_support = models.BooleanField(default=True, help_text="Show reader support. Without a payment URL the button is a disabled preview.")
     support_url = models.URLField(blank=True, help_text="Paste her chosen hosted donation/payment page URL.")
     support_label = models.CharField(max_length=80, default="Buy me cat treats")
+    pin_nav = models.BooleanField(default=False, help_text="Keep the navigation at the top while scrolling.")
     logo_style = models.CharField(max_length=20, choices=[("cat", "Cat — Curious Observer"), ("lighthouse", "Lighthouse — Clear Signal"), ("pen", "Pen & Star — Independent Voice")], default="cat")
     show_logo = models.BooleanField(default=True)
     logo = models.ImageField(upload_to="logos/", blank=True, help_text="Optional custom logo; otherwise the selected illustrated logo is used.")

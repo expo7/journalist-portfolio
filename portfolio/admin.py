@@ -38,7 +38,7 @@ class FieldNoteAdmin(admin.ModelAdmin):
 @admin.register(SiteProfile)
 class SiteProfileAdmin(admin.ModelAdmin):
     fieldsets = (
-        ("Appearance", {"fields": ("theme", "hero_art", "show_logo", "logo_style", "logo", "headshot"), "description": "Choose a default style and upload a profile picture or logo. All existing styles remain available."}),
+        ("Appearance", {"fields": ("theme", "pin_nav", "hero_art", "show_logo", "logo_style", "logo", "headshot"), "description": "Choose a default style and upload a profile picture or logo. All existing styles remain available."}),
         ("Optional sections", {"fields": ("show_field_notes",)}),
         ("Reader support", {"fields": ("show_support", "support_label", "support_url")}),
         ("Publication credit", {"fields": ("publication_credit", "publication_archive_url")}),

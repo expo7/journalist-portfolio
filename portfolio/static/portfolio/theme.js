@@ -20,6 +20,12 @@
     const saved = sessionStorage.getItem("portfolio-preview-style");
     if (themes.includes(saved)) apply(saved);
   } catch {}
+  const navSelect = document.querySelector('#page-nav');
+  if (navSelect) {
+    function applyNav(value) { document.body.dataset.nav = value; navSelect.value = value; }
+    try { const saved = sessionStorage.getItem('portfolio-preview-nav'); if (['scrolling', 'pinned'].includes(saved)) applyNav(saved); } catch {}
+    navSelect.addEventListener('change', () => { applyNav(navSelect.value); try { sessionStorage.setItem('portfolio-preview-nav', navSelect.value); } catch {} });
+  }
   const logoSelect = document.querySelector('#page-logo');
   if (logoSelect) {
     const available = [...logoSelect.options].map(option => option.value);

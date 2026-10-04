@@ -126,3 +126,5 @@ Correction: reader support says “Buy me cat treats.” The August 4 publisher 
 Midnight Glow adds the Deathmatch-style upper-right radial glow and diagonal panel gradients in the portfolio navy palette. The style menu retains every previous option. Contact inputs use white backgrounds and black text, and both Send message buttons share the same navy treatment in every style.
 
 Logo options replace the KB monogram with three original SVG marks: Cat (curiosity), Lighthouse (clarity), and Pen & Star (independent voice). The on-page Logo dropdown remembers a tab preview; admin Appearance → Logo style sets the default. Uploaded logos remain available as a fourth preview choice.
+
+Navigation can be previewed as Scrolling or Pinned from the on-page menu. Pinned uses sticky positioning and leaves the preview controls above it, so only the actual navigation occupies screen space during scrolling. The choice persists for the tab; admin Appearance → Pin nav sets the site-wide default.

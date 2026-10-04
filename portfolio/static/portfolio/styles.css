@@ -60,3 +60,7 @@ section[id] { scroll-margin-top:100px; }
 body[data-logo="cat"] .logo-cat,body[data-logo="lighthouse"] .logo-lighthouse,body[data-logo="pen"] .logo-pen,body[data-logo="custom"] .logo-custom { display:block; }
 .style-switcher { flex-wrap:wrap; }
 @media(max-width:780px) { .logo-symbol { width:34px; height:34px; } }
+
+body[data-nav="scrolling"] .site-header { position:relative; }
+body[data-nav="pinned"] .site-header { position:sticky; top:0; z-index:10; }
+body[data-nav="pinned"] .site-header { box-shadow:0 4px 16px rgba(0,0,0,.12); }

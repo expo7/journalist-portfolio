@@ -6,19 +6,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="{{ profile.name }} is an investigative journalist reporting on power, people, and the public record." />
     <title>{{ profile.name }} — Investigative Journalist</title>
-    <link rel="stylesheet" href="{% static 'portfolio/styles.css' %}?v=4" />
+    <link rel="stylesheet" href="{% static 'portfolio/styles.css' %}?v=5" />
     <link id="harbor-theme" rel="stylesheet" href="{% static 'portfolio/harbor.css' %}?v=1" {% if profile.theme == "original" %}disabled{% endif %} />
     <link id="rose-theme" rel="stylesheet" href="{% static 'portfolio/rose.css' %}?v=1" {% if profile.theme != "rose" %}disabled{% endif %} />
     <link id="midnight-theme" rel="stylesheet" href="{% static 'portfolio/midnight.css' %}?v=1" {% if profile.theme != "midnight" and profile.theme != "glow" %}disabled{% endif %} />
     <link id="glow-theme" rel="stylesheet" href="{% static 'portfolio/glow.css' %}?v=1" {% if profile.theme != "glow" %}disabled{% endif %} />
     <link rel="stylesheet" href="{% static 'portfolio/forms.css' %}?v=1" />
   </head>
-  <body data-logo="{{ profile.logo_style }}" class="theme-{{ profile.theme }} hero-art-{{ profile.hero_art }}">
+  <body data-nav="{% if profile.pin_nav %}pinned{% else %}scrolling{% endif %}" data-logo="{{ profile.logo_style }}" class="theme-{{ profile.theme }} hero-art-{{ profile.hero_art }}">
     <div class="style-switcher" aria-label="Website style">
       <label for="page-style">Style</label>
       <select id="page-style"><option value="original" {% if profile.theme == "original" %}selected{% endif %}>Paper Trail</option><option value="harbor" {% if profile.theme == "harbor" %}selected{% endif %}>Harbor Editorial</option><option value="rose" {% if profile.theme == "rose" %}selected{% endif %}>Harbor Rose</option><option value="midnight" {% if profile.theme == "midnight" %}selected{% endif %}>Midnight Blue</option><option value="glow" {% if profile.theme == "glow" %}selected{% endif %}>Midnight Glow</option></select>
       <label for="hero-art">Hero image</label><select id="hero-art"><option value="lighthouse" {% if profile.hero_art == "lighthouse" %}selected{% endif %}>Lighthouse</option><option value="corkboard" {% if profile.hero_art == "corkboard" %}selected{% endif %}>Corkboard</option></select>
       <label for="page-logo">Logo</label><select id="page-logo"><option value="cat" {% if profile.logo_style == "cat" %}selected{% endif %}>Cat</option><option value="lighthouse" {% if profile.logo_style == "lighthouse" %}selected{% endif %}>Lighthouse</option><option value="pen" {% if profile.logo_style == "pen" %}selected{% endif %}>Pen &amp; Star</option>{% if profile.logo %}<option value="custom">Uploaded logo</option>{% endif %}</select>
+      <label for="page-nav">Navigation</label><select id="page-nav"><option value="scrolling" {% if not profile.pin_nav %}selected{% endif %}>Scrolling</option><option value="pinned" {% if profile.pin_nav %}selected{% endif %}>Pinned</option></select>
     </div>
     <a class="skip-link" href="#main">Skip to content</a>
     <header class="site-header">
@@ -183,6 +184,6 @@
       <p class="copyright">© <span id="year"></span> {{ profile.name }}</p>
     </footer>
     <script src="{% static 'portfolio/script.js' %}?v=2"></script>
-    <script src="{% static 'portfolio/theme.js' %}?v=6"></script>
+    <script src="{% static 'portfolio/theme.js' %}?v=7"></script>
   </body>
 </html>
