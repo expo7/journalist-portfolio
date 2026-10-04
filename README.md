@@ -120,3 +120,5 @@ Latest direction: the corkboard was intended as a visual style, so the standalon
 `python manage.py import_observer_links` adds the four distinct article links verified from the downloaded PDFs, including dates and installment subtitles. It corrects the original placeholder link and uses the byline-based credit “Special contributor.” It does not publish the downloaded PDFs or copy full article text.
 
 Article cards open the publisher directly when no text or document is hosted locally; existing internal links redirect there too. The supplied nebula is the fallback card artwork. The on-page Hero image selector previews Lighthouse or Corkboard independently of the color style and remembers the selection for the tab. Admin → Site profile → Appearance sets the default hero image. Corkboard artwork is decorative, not a research section.
+
+Correction: reader support says “Buy me cat treats.” The August 4 publisher PDF is the continuation of the July 28 driver’s-window article. Its heading and editor’s note use inconsistent numbering, so the portfolio labels it “continued” rather than asserting a new part number.

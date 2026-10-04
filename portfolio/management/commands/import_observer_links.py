@@ -12,6 +12,7 @@ class Command(BaseCommand):
             ('2026-05-19', 'Whatever was at the door', '7fca57cf-9439-4168-a609-3a084cbe2642', 'Part 2 of 3'),
             ('2026-05-26', 'The Mountains Don’t Forget', '355a9047-2ae2-48b9-8906-131467bc490f', 'Part 3 of 3'),
             ('2026-07-28', 'Something Outside My Driver’s Window', '0bc8fc9f-d8e3-463a-a6ac-4a6681fa17b3', 'Episode 2 · Part 1 of 2'),
+            ('2026-08-04', 'Something Outside My Driver’s Window — continued', 'e91bf84a-d0f9-4359-b28c-b6654ca7b425', 'Episode 2 · Continuation of the July 28 article'),
         ]
         for index, (day, subtitle, article_id, installment) in enumerate(rows):
             slug = 'theyre-here-mysteries-on-the-reservation' if index == 0 else 'theyre-here-' + day
@@ -24,4 +25,4 @@ class Command(BaseCommand):
                 story.artwork = 'night'
                 story.save()
         SiteProfile.objects.filter(pk=1).update(publication_credit='Special contributor to the Navajo-Hopi Observer')
-        self.stdout.write(self.style.SUCCESS('Four article links prepared from publisher PDF metadata.'))
+        self.stdout.write(self.style.SUCCESS('Five article links prepared from publisher PDF metadata.'))

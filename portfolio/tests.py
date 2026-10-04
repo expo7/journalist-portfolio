@@ -192,14 +192,14 @@ class OptionalSectionTests(TestCase):
         profile = SiteProfile.objects.get(pk=1)
         profile.show_support = True
         profile.save()
-        self.assertContains(self.client.get(reverse("home")), "Buy me a dog treat")
+        self.assertContains(self.client.get(reverse("home")), "Buy me cat treats")
         self.assertContains(self.client.get(reverse("home")), "payment link coming soon")
         profile.support_url = "https://example.com/support"
         profile.save()
-        self.assertContains(self.client.get(reverse("home")), "Buy me a dog treat")
+        self.assertContains(self.client.get(reverse("home")), "Buy me cat treats")
         profile.show_support = False
         profile.save()
-        self.assertNotContains(self.client.get(reverse("home")), "Buy me a dog treat")
+        self.assertNotContains(self.client.get(reverse("home")), "Buy me cat treats")
 
     def test_corkboard_removed_from_public_page(self):
         response = self.client.get(reverse("home"))

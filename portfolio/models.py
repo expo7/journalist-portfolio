@@ -81,7 +81,7 @@ class SiteProfile(models.Model):
     show_corkboard = models.BooleanField(default=True)
     show_support = models.BooleanField(default=True, help_text="Show reader support. Without a payment URL the button is a disabled preview.")
     support_url = models.URLField(blank=True, help_text="Paste her chosen hosted donation/payment page URL.")
-    support_label = models.CharField(max_length=80, default="Buy me a dog treat")
+    support_label = models.CharField(max_length=80, default="Buy me cat treats")
     show_logo = models.BooleanField(default=True)
     logo = models.ImageField(upload_to="logos/", blank=True, help_text="Optional custom logo; otherwise a KB monogram is used.")
     publication_credit = models.CharField(max_length=180, blank=True, default="Work published in the Navajo-Hopi Observer")
