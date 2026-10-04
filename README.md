@@ -128,3 +128,5 @@ Midnight Glow adds the Deathmatch-style upper-right radial glow and diagonal pan
 Logo options replace the KB monogram with three original SVG marks: Cat (curiosity), Lighthouse (clarity), and Pen & Star (independent voice). The on-page Logo dropdown remembers a tab preview; admin Appearance → Logo style sets the default. Uploaded logos remain available as a fourth preview choice.
 
 Navigation can be previewed as Scrolling or Pinned from the on-page menu. Pinned uses sticky positioning and leaves the preview controls above it, so only the actual navigation occupies screen space during scrolling. The choice persists for the tab; admin Appearance → Pin nav sets the site-wide default.
+
+Kandace’s supplied cat photos appear in reader support and replace the illustrated profile placeholder when no headshot is uploaded. Three distinct photos are used; the duplicate attachment is omitted. WebP copies have no embedded EXIF metadata, and originals remain unchanged.

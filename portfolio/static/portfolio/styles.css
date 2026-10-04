@@ -64,3 +64,8 @@ body[data-logo="cat"] .logo-cat,body[data-logo="lighthouse"] .logo-lighthouse,bo
 body[data-nav="scrolling"] .site-header { position:relative; }
 body[data-nav="pinned"] .site-header { position:sticky; top:0; z-index:10; }
 body[data-nav="pinned"] .site-header { box-shadow:0 4px 16px rgba(0,0,0,.12); }
+
+.cat-gallery { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:1rem; max-width:920px; margin:2rem 0; }
+.cat-gallery img { display:block; width:100%; height:auto; border-radius:8px; }
+.about-portrait .real-cat-portrait { object-position:50% 35%; }
+@media(max-width:580px) { .cat-gallery { gap:.5rem; } }
