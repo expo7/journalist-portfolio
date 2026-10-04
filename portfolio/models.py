@@ -46,6 +46,11 @@ class Story(models.Model):
         return self.title
 
     @property
+    def reading_url(self):
+        from django.urls import reverse
+        return reverse('story_detail', args=[self.slug]) if self.has_hosted_content or not self.article_url else self.article_url
+
+    @property
     def has_hosted_content(self):
         return bool(self.article_body or self.article_file)
 
@@ -81,6 +86,7 @@ class SiteProfile(models.Model):
     logo = models.ImageField(upload_to="logos/", blank=True, help_text="Optional custom logo; otherwise a KB monogram is used.")
     publication_credit = models.CharField(max_length=180, blank=True, default="Work published in the Navajo-Hopi Observer")
     publication_archive_url = models.URLField(blank=True)
+    hero_art = models.CharField(max_length=20, choices=[("lighthouse", "Lighthouse"), ("corkboard", "Corkboard")], default="lighthouse")
     name = models.CharField(max_length=100, default="Kandace Baez")
     role = models.CharField(max_length=120, default="Independent investigative reporting")
     hero_headline = models.CharField(max_length=100, default="Follow the")

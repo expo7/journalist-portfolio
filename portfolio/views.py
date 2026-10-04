@@ -49,6 +49,8 @@ def contact(request):
 
 def story_detail(request, slug):
     story = get_object_or_404(Story.objects.filter(is_published=True), slug=slug)
+    if not story.has_hosted_content and story.article_url:
+        return redirect(story.article_url)
     return render(
         request,
         "portfolio/story_detail.html",

@@ -11,10 +11,11 @@
     <link id="rose-theme" rel="stylesheet" href="{% static 'portfolio/rose.css' %}?v=1" {% if profile.theme != "rose" %}disabled{% endif %} />
     <link id="midnight-theme" rel="stylesheet" href="{% static 'portfolio/midnight.css' %}?v=1" {% if profile.theme != "midnight" %}disabled{% endif %} />
   </head>
-  <body class="theme-{{ profile.theme }}">
+  <body class="theme-{{ profile.theme }} hero-art-{{ profile.hero_art }}">
     <div class="style-switcher" aria-label="Website style">
       <label for="page-style">Style</label>
       <select id="page-style"><option value="original" {% if profile.theme == "original" %}selected{% endif %}>Paper Trail</option><option value="harbor" {% if profile.theme == "harbor" %}selected{% endif %}>Harbor Editorial</option><option value="rose" {% if profile.theme == "rose" %}selected{% endif %}>Harbor Rose</option><option value="midnight" {% if profile.theme == "midnight" %}selected{% endif %}>Midnight Blue</option></select>
+      <label for="hero-art">Hero image</label><select id="hero-art"><option value="lighthouse" {% if profile.hero_art == "lighthouse" %}selected{% endif %}>Lighthouse</option><option value="corkboard" {% if profile.hero_art == "corkboard" %}selected{% endif %}>Corkboard</option></select>
     </div>
     <a class="skip-link" href="#main">Skip to content</a>
     <header class="site-header">
@@ -43,6 +44,7 @@
             <a class="text-link" href="#about">Meet {{ profile.name }} <span aria-hidden="true">→</span></a>
           </div>
         </div>
+        <div class="corkboard-visual"><img src="{% static 'portfolio/corkboard-hero.webp' %}" alt="An editorial corkboard with pinned notes, photographs and connecting threads" /></div>
         <div class="harbor-visual">
           <div class="harbor-caption"><span>THE PUBLIC RECORD</span><span>INDEPENDENT / IN DEPTH</span></div>
           <svg viewBox="0 0 480 500" role="img" aria-label="A lighthouse casting a beam across a quiet harbor">
@@ -95,14 +97,14 @@
           {% for story in stories %}
             <article class="story-card {% if story.is_featured %}story-featured{% endif %}" data-category="{{ story.category }}">
               <div class="story-art art-{{ story.artwork }}">
-                {% if story.image %}<img class="story-image" src="{{ story.image.url }}" alt="" loading="lazy" />{% endif %}
+                {% if story.image %}<img class="story-image" src="{{ story.image.url }}" alt="" loading="lazy" />{% else %}<img class="story-image" src="{% static 'portfolio/article-nebula.webp' %}" alt="" loading="lazy" />{% endif %}
                 <span class="art-label">{% if story.topic %}{{ story.get_topic_display|upper }}{% else %}{{ story.get_category_display|upper }}{% endif %}</span>
                 {% if story.artwork == "housing" %}<span class="building building-a"></span><span class="building building-b"></span><span class="window-grid"></span>{% endif %}
                 {% if story.artwork == "water" %}<span class="waterline"></span><span class="sun"></span><span class="wave wave-one"></span><span class="wave wave-two"></span>{% endif %}
                 {% if story.artwork == "school" %}<span class="folder folder-back"></span><span class="folder folder-front">BUDGET<br />FILES</span><span class="clip"></span>{% endif %}
               </div>
               <div class="story-meta"><span>{{ story.publication }}</span>{% if story.published_on %}<span>{{ story.published_on|date:"F Y" }}</span>{% endif %}</div>
-              <h3><a href="{% url 'story_detail' story.slug %}">{{ story.title }} <span aria-hidden="true">→</span></a></h3>
+              <h3><a href="{{ story.reading_url }}">{{ story.title }} <span aria-hidden="true">→</span></a></h3>
               <p>{{ story.deck }}</p>
             </article>
           {% empty %}
@@ -178,6 +180,6 @@
       <p class="copyright">© <span id="year"></span> {{ profile.name }}</p>
     </footer>
     <script src="{% static 'portfolio/script.js' %}?v=2"></script>
-    <script src="{% static 'portfolio/theme.js' %}?v=3"></script>
+    <script src="{% static 'portfolio/theme.js' %}?v=4"></script>
   </body>
 </html>

@@ -46,3 +46,11 @@ section[id] { scroll-margin-top:100px; }
 .story-art .art-label { z-index:2; }
 
 .art-night { background:radial-gradient(circle at 74% 22%,#e4edff 0 2px,transparent 3px),radial-gradient(circle at 35% 42%,#e4edff 0 1px,transparent 2px),radial-gradient(circle at 16% 18%,#e4edff 0 2px,transparent 3px),linear-gradient(165deg,#102345,#253e66 70%,#09142a); }
+
+.corkboard-visual { display:none; width:100%; max-width:460px; justify-self:end; border:1px solid var(--line); padding:12px; }
+.corkboard-visual img { display:block; width:100%; height:auto; }
+.hero-art-corkboard .corkboard-visual { display:block; }
+.hero-art-corkboard .harbor-visual,.hero-art-corkboard .hero-visual { display:none; }
+@media(max-width:780px) { .corkboard-visual { justify-self:center; max-width:360px; } .style-switcher { flex-wrap:wrap; } }
+
+.corkboard-visual img { max-height:540px; object-fit:cover; object-position:top; }

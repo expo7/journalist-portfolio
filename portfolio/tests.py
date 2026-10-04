@@ -211,3 +211,14 @@ class OptionalSectionTests(TestCase):
         response = self.client.get(reverse("home"))
         self.assertNotContains(response, 'id="notes"')
         self.assertNotContains(response, 'href="#notes"')
+
+
+class ArticleDestinationTests(TestCase):
+    def test_external_only_story_card_and_route_open_publisher(self):
+        story = Story.objects.create(title="External article", slug="external-article", publication="Observer", category="features", deck="Summary", article_url="https://www.nhonews.com/example")
+        self.assertContains(self.client.get(reverse('home')), 'href="https://www.nhonews.com/example"')
+        self.assertRedirects(self.client.get(reverse('story_detail', args=[story.slug])), story.article_url, fetch_redirect_response=False)
+        story.article_body = 'Hosted article text'
+        story.save()
+        self.assertEqual(story.reading_url, reverse('story_detail', args=[story.slug]))
+        self.assertContains(self.client.get(story.reading_url), 'Hosted article text')
