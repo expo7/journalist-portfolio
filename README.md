@@ -102,3 +102,15 @@ The public page also has a Style selector for instant demo comparisons. It remem
 An Admin link is temporarily visible in the homepage navigation and article header for the demo. Authentication is still required.
 
 Harbor Rose is a third style: warmer ivory, muted plum, and soft rose/brass accents. It is available in both the on-page selector and admin.
+
+### Kandace feedback iteration
+
+**Site profile** now groups editing into Appearance (style, headshot upload, custom logo or KB monogram), Optional sections (field notes and corkboard), Reader support, Publication credit, Identity, About, and Contact. Midnight Blue is a fourth style; prior options remain. Field notes default off. Reader support defaults off and requires a hosted payment URL as well as the switch; no payment account is created by this site.
+
+**Stories** support topic tags and uploaded cover images; the publication date may be left blank until verified. **Corkboard items** are separate from field notes and default to unpublished. Only explicitly published items appear on the public board. Do not put confidential sources or private research in public summaries.
+
+After migration, optionally run `python manage.py prepare_kandace_demo` to set Midnight as the default, reflect the supplied interests, add the supplied UFO article link without inventing a publication date, and link the publisher archive. This command retains unedited sample stories as unpublished drafts, preserves uploads and support settings, and does not overwrite an existing copy of the linked article. It updates the demo bio; review before running against edited production copy.
+
+Pending editorial verification: full publisher article list and dates; whether “featured guest contributor” is her formal credit; the gorilla article/study and trip location; reference image for the precise navy color; her final logo and hosted donation URL. The gorilla topic is an interest, not a published scientific claim. Confirm these when Kandace supplies source material before adding detailed claims. No full publisher article text has been copied.
+
+This is the reusable development pattern: preserve named style options, give optional sections independent switches, and keep content editing separate from appearance. A switch hides a section without deleting its records.

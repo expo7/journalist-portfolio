@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import ContactMessage, FieldNote, SiteProfile, Story
+from .models import ContactMessage, CorkboardItem, FieldNote, SiteProfile, Story
 
 
 @admin.register(Story)
@@ -12,7 +12,7 @@ class StoryAdmin(admin.ModelAdmin):
     search_fields = ("title", "publication", "deck")
     ordering = ("sort_order", "-published_on")
     fieldsets = (
-        ("Publication", {"fields": ("title", "slug", "publication", "published_on", "category", "deck")}),
+        ("Publication", {"fields": ("title", "slug", "publication", "published_on", "category", "topic", "deck")}),
         (
             "Hosted article",
             {
@@ -21,7 +21,7 @@ class StoryAdmin(admin.ModelAdmin):
             },
         ),
         ("External publication", {"fields": ("article_url",)}),
-        ("Presentation", {"fields": ("artwork", "is_featured", "is_published", "sort_order")}),
+        ("Presentation", {"fields": ("image", "artwork", "is_featured", "is_published", "sort_order")}),
     )
 
 
@@ -38,9 +38,12 @@ class FieldNoteAdmin(admin.ModelAdmin):
 @admin.register(SiteProfile)
 class SiteProfileAdmin(admin.ModelAdmin):
     fieldsets = (
-        ("Website style", {"fields": ("theme",)}),
+        ("Appearance", {"fields": ("theme", "show_logo", "logo", "headshot"), "description": "Choose a default style and upload a profile picture or logo. All existing styles remain available."}),
+        ("Optional sections", {"fields": ("show_field_notes", "show_corkboard")}),
+        ("Reader support", {"fields": ("show_support", "support_label", "support_url")}),
+        ("Publication credit", {"fields": ("publication_credit", "publication_archive_url")}),
         ("Identity and hero", {"fields": ("name", "role", "hero_headline", "hero_emphasis", "intro")}),
-        ("About", {"fields": ("about_heading", "bio", "location", "beats", "headshot")}),
+        ("About", {"fields": ("about_heading", "bio", "location", "beats")}),
         ("Contact", {"fields": ("contact_email", "tip_email", "footer_tagline")}),
     )
 
@@ -65,3 +68,11 @@ class ContactMessageAdmin(admin.ModelAdmin):
 
     def has_add_permission(self, request):
         return False
+
+
+@admin.register(CorkboardItem)
+class CorkboardItemAdmin(admin.ModelAdmin):
+    list_display = ("title", "status", "is_published", "sort_order")
+    list_filter = ("status", "is_published")
+    list_editable = ("is_published", "sort_order")
+    search_fields = ("title", "summary")

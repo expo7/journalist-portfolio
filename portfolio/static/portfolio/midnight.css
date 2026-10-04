@@ -1,0 +1,24 @@
+/* A provisional deep blue palette, pending Kandace's reference image. */
+:root { --ink:#f7f9fc; --cream:#0b1934; --paper:#132745; --rust:#bfd8ff; --gold:#d9c6a0; --olive:#a8bdd1; --line:rgba(230,239,255,.25); }
+body,.site-header,.notes,.site-footer { background:var(--cream); color:var(--ink); }
+.site-header { border-top-color:var(--gold); }
+.theme-midnight .hero-visual { display:none; }
+.theme-midnight .harbor-visual { border-color:var(--line); }
+.hero h1 em { color:var(--ink); }
+.story-card p,.article-deck,.about-details span,.note-list time,.publication-credit { color:#c5d3e7; }
+.statement,.contact { background:#132745; color:var(--ink); }
+.statement .text-link,.contact .eyebrow { color:var(--gold); }
+.button-dark,.contact-form .button-dark { background:#f7f9fc; color:#0b1934; }
+.button-dark:hover,.contact-form .button-dark:hover { background:#d9c6a0; color:#0b1934; }
+.button-outline,.nav-contact { border-color:var(--line); color:var(--ink); }
+.filter { color:var(--ink); border-color:var(--line); }
+.filter.is-active { background:#f7f9fc; color:#0b1934; }
+.style-switcher { background:#061126; color:#f7f9fc; }
+.style-switcher select { background:#132745; color:#f7f9fc; }
+.contact-form input,.contact-form textarea { background:#0b1934; color:#f7f9fc; border-color:var(--line); }
+.portrait-caption { background:#132745; color:#f7f9fc; }
+.story-art { filter:saturate(.65); }
+:focus-visible { outline-color:#bfd8ff; }
+.skip-link { background:#f7f9fc; color:#0b1934; }
+.filter:hover { background:#f7f9fc; color:#0b1934; }
+.tip-form .button-outline,.tip-form .button-outline:hover { color:#0b1934; }

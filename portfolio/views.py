@@ -4,7 +4,7 @@ from django.shortcuts import get_object_or_404, redirect, render
 from django.urls import reverse
 
 from .forms import ContactMessageForm
-from .models import ContactMessage, FieldNote, SiteProfile, Story
+from .models import ContactMessage, CorkboardItem, FieldNote, SiteProfile, Story
 
 
 def home(request, contact_form=None, tip_form=None):
@@ -14,6 +14,7 @@ def home(request, contact_form=None, tip_form=None):
         {
             "stories": Story.objects.filter(is_published=True),
             "field_notes": FieldNote.objects.filter(is_published=True),
+            "corkboard_items": CorkboardItem.objects.filter(is_published=True),
             "profile": SiteProfile.objects.get(pk=1),
             "contact_form": contact_form or ContactMessageForm(
                 initial={"kind": ContactMessage.Kind.CONTACT}

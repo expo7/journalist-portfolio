@@ -11,13 +11,16 @@ class Story(models.Model):
         HOUSING = "housing", "Housing"
         WATER = "water", "Water"
         SCHOOL = "school", "School"
+        NIGHT = "night", "Night sky"
 
     title = models.CharField(max_length=180)
     slug = models.SlugField(unique=True)
     publication = models.CharField(max_length=80)
-    published_on = models.DateField()
+    published_on = models.DateField(blank=True, null=True)
     category = models.CharField(max_length=20, choices=Category.choices)
     artwork = models.CharField(max_length=20, choices=Artwork.choices, default=Artwork.HOUSING)
+    topic = models.CharField(max_length=30, blank=True, choices=[("animals", "Animal rights"), ("mysteries", "UFOs & unexplained mysteries"), ("nature", "Wildlife & medicinal plants")])
+    image = models.ImageField(upload_to="story-images/", blank=True)
     deck = models.TextField()
     article_body = models.TextField(
         blank=True,
@@ -65,10 +68,19 @@ class FieldNote(models.Model):
 class SiteProfile(models.Model):
     theme = models.CharField(
         max_length=20,
-        choices=[("original", "Original — Paper Trail"), ("harbor", "Harbor Editorial — Navy & Ivory"), ("rose", "Harbor Rose — Plum & Ivory")],
+        choices=[("original", "Original — Paper Trail"), ("harbor", "Harbor Editorial — Navy & Ivory"), ("rose", "Harbor Rose — Plum & Ivory"), ("midnight", "Midnight — Deep Blue & White")],
         default="original",
         help_text="Choose the public website style. Save, then refresh the website to compare.",
     )
+    show_field_notes = models.BooleanField(default=False)
+    show_corkboard = models.BooleanField(default=True)
+    show_support = models.BooleanField(default=False, help_text="The button appears only when enabled and a payment link is supplied.")
+    support_url = models.URLField(blank=True, help_text="Paste her chosen hosted donation/payment page URL.")
+    support_label = models.CharField(max_length=80, default="Buy me cat treats")
+    show_logo = models.BooleanField(default=True)
+    logo = models.ImageField(upload_to="logos/", blank=True, help_text="Optional custom logo; otherwise a KB monogram is used.")
+    publication_credit = models.CharField(max_length=180, blank=True, default="Work published in the Navajo-Hopi Observer")
+    publication_archive_url = models.URLField(blank=True)
     name = models.CharField(max_length=100, default="Kandace Baez")
     role = models.CharField(max_length=120, default="Independent investigative reporting")
     hero_headline = models.CharField(max_length=100, default="Follow the")
@@ -115,3 +127,18 @@ class ContactMessage(models.Model):
     def __str__(self):
         sender = self.name or self.email or "Anonymous"
         return f"{self.get_kind_display()} from {sender}"
+
+
+class CorkboardItem(models.Model):
+    title = models.CharField(max_length=180)
+    summary = models.TextField(blank=True, help_text="Public-facing description only. Keep confidential research outside this board.")
+    source_url = models.URLField(blank=True)
+    status = models.CharField(max_length=20, choices=[("exploring", "Exploring"), ("requested", "Records requested"), ("reviewing", "Reviewing records"), ("published", "Published")], default="exploring")
+    is_published = models.BooleanField(default=False)
+    sort_order = models.PositiveSmallIntegerField(default=0)
+
+    class Meta:
+        ordering = ("sort_order", "pk")
+
+    def __str__(self):
+        return self.title
