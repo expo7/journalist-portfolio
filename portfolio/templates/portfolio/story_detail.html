@@ -39,7 +39,7 @@
     </main>
     <footer class="site-footer">
       <div><a class="wordmark" href="{% url 'home' %}">{{ profile.name|upper }}</a><p>{{ profile.footer_tagline }}</p></div>
-      <div class="footer-links"><a href="{% url 'home' %}#contact">Send a confidential tip ↓</a><a href="mailto:{{ profile.contact_email }}">{{ profile.contact_email }}</a></div>
+      <div class="footer-links"><a href="{% url 'home' %}#contact">Send a message ↓</a><a href="mailto:{{ profile.contact_email }}">{{ profile.contact_email }}</a></div>
       <p class="copyright">© {% now "Y" %} {{ profile.name }}</p>
     </footer>
     <script src="{% static 'portfolio/theme.js' %}?v=3"></script>

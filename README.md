@@ -114,3 +114,7 @@ After migration, optionally run `python manage.py prepare_kandace_demo` to set M
 Pending editorial verification: full publisher article list and dates; whether “featured guest contributor” is her formal credit; the gorilla article/study and trip location; reference image for the precise navy color; her final logo and hosted donation URL. The gorilla topic is an interest, not a published scientific claim. Confirm these when Kandace supplies source material before adding detailed claims. No full publisher article text has been copied.
 
 This is the reusable development pattern: preserve named style options, give optional sections independent switches, and keep content editing separate from appearance. A switch hides a section without deleting its records.
+
+Latest direction: the corkboard was intended as a visual style, so the standalone research board and its admin entry are removed. Stored board records are retained for reversibility. Reader support defaults on with “Buy me a dog treat”; without a hosted payment URL it is clearly a disabled preview. Navigation and contact buttons use “Message” to distinguish correspondence from donations.
+
+`python manage.py import_observer_links` adds the four distinct article links verified from the downloaded PDFs, including dates and installment subtitles. It corrects the original placeholder link and uses the byline-based credit “Special contributor.” It does not publish the downloaded PDFs or copy full article text.

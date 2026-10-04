@@ -188,28 +188,23 @@ class ContentImportCommandTests(TestCase):
 
 
 class OptionalSectionTests(TestCase):
-    def test_support_requires_toggle_and_payment_url(self):
+    def test_support_preview_and_payment_link(self):
         profile = SiteProfile.objects.get(pk=1)
         profile.show_support = True
         profile.save()
-        self.assertNotContains(self.client.get(reverse("home")), "Buy me cat treats")
+        self.assertContains(self.client.get(reverse("home")), "Buy me a dog treat")
+        self.assertContains(self.client.get(reverse("home")), "payment link coming soon")
         profile.support_url = "https://example.com/support"
         profile.save()
-        self.assertContains(self.client.get(reverse("home")), "Buy me cat treats")
+        self.assertContains(self.client.get(reverse("home")), "Buy me a dog treat")
         profile.show_support = False
         profile.save()
-        self.assertNotContains(self.client.get(reverse("home")), "Buy me cat treats")
+        self.assertNotContains(self.client.get(reverse("home")), "Buy me a dog treat")
 
-    def test_corkboard_never_shows_drafts_and_can_be_disabled(self):
-        from .models import CorkboardItem
-        CorkboardItem.objects.create(title="Private research title", summary="Private source", is_published=False)
-        CorkboardItem.objects.create(title="Public research title", is_published=True)
+    def test_corkboard_removed_from_public_page(self):
         response = self.client.get(reverse("home"))
-        self.assertContains(response, "Public research title")
-        self.assertNotContains(response, "Private research title")
-        self.assertNotContains(response, "Private source")
-        SiteProfile.objects.filter(pk=1).update(show_corkboard=False)
-        self.assertNotContains(self.client.get(reverse("home")), "Public research title")
+        self.assertNotContains(response, 'id="corkboard"')
+        self.assertNotContains(response, 'href="#corkboard"')
 
     def test_field_notes_disabled_removes_section_and_navigation(self):
         SiteProfile.objects.filter(pk=1).update(show_field_notes=False)

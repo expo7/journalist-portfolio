@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import ContactMessage, CorkboardItem, FieldNote, SiteProfile, Story
+from .models import ContactMessage, FieldNote, SiteProfile, Story
 
 
 @admin.register(Story)
@@ -39,7 +39,7 @@ class FieldNoteAdmin(admin.ModelAdmin):
 class SiteProfileAdmin(admin.ModelAdmin):
     fieldsets = (
         ("Appearance", {"fields": ("theme", "show_logo", "logo", "headshot"), "description": "Choose a default style and upload a profile picture or logo. All existing styles remain available."}),
-        ("Optional sections", {"fields": ("show_field_notes", "show_corkboard")}),
+        ("Optional sections", {"fields": ("show_field_notes",)}),
         ("Reader support", {"fields": ("show_support", "support_label", "support_url")}),
         ("Publication credit", {"fields": ("publication_credit", "publication_archive_url")}),
         ("Identity and hero", {"fields": ("name", "role", "hero_headline", "hero_emphasis", "intro")}),
@@ -68,11 +68,3 @@ class ContactMessageAdmin(admin.ModelAdmin):
 
     def has_add_permission(self, request):
         return False
-
-
-@admin.register(CorkboardItem)
-class CorkboardItemAdmin(admin.ModelAdmin):
-    list_display = ("title", "status", "is_published", "sort_order")
-    list_filter = ("status", "is_published")
-    list_editable = ("is_published", "sort_order")
-    search_fields = ("title", "summary")
