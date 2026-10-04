@@ -20,6 +20,13 @@
     const saved = sessionStorage.getItem("portfolio-preview-style");
     if (themes.includes(saved)) apply(saved);
   } catch {}
+  const logoSelect = document.querySelector('#page-logo');
+  if (logoSelect) {
+    const available = [...logoSelect.options].map(option => option.value);
+    function applyLogo(value) { document.body.dataset.logo = value; logoSelect.value = value; }
+    try { const saved = sessionStorage.getItem('portfolio-preview-logo'); if (available.includes(saved)) applyLogo(saved); } catch {}
+    logoSelect.addEventListener('change', () => { applyLogo(logoSelect.value); try { sessionStorage.setItem('portfolio-preview-logo', logoSelect.value); } catch {} });
+  }
   const artSelect = document.querySelector('#hero-art');
   if (artSelect) {
     function applyArt(value) {

@@ -1,0 +1,6 @@
+{% if profile.show_logo %}<span class="logo-options" aria-hidden="true">
+<svg class="logo-symbol logo-cat" viewBox="0 0 64 64" fill="none"><path d="M12 30 14 9 27 19Q32 17 37 19L50 9 52 30Q56 51 32 55Q8 51 12 30Z" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round"/><path d="M21 32q4-5 8 0m6 0q4-5 8 0M29 39h6l-3 4-3-4Zm3 4v5m-14-9-10-3m10 8-10 2m38-7 10-3m-10 8 10 2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+<svg class="logo-symbol logo-lighthouse" viewBox="0 0 64 64" fill="none"><path d="m22 50 4-29h12l4 29M25 21v-9h14v9M22 12l10-7 10 7M27 32h10m-11 9h12M18 50h28M5 57q9-6 18 0t18 0t18 0M20 17 5 12m39 5 15-5" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M30 45h4v5h-4z" fill="currentColor"/></svg>
+<svg class="logo-symbol logo-pen" viewBox="0 0 64 64" fill="none"><path d="m10 52 8-25L42 13l9 9-14 24-27 6Zm0 0 20-20m-12-5 19 19M43 7l7-4 11 11-4 7M8 59h41" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="31" cy="31" r="3" fill="currentColor"/><path d="m52 37 2.5 6.5L61 46l-6.5 2.5L52 55l-2.5-6.5L43 46l6.5-2.5Z" fill="currentColor"/></svg>
+{% if profile.logo %}<img class="logo-symbol logo-custom" src="{{ profile.logo.url }}" alt="" />{% endif %}
+</span>{% endif %}

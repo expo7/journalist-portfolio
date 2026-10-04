@@ -124,3 +124,5 @@ Article cards open the publisher directly when no text or document is hosted loc
 Correction: reader support says “Buy me cat treats.” The August 4 publisher PDF is the continuation of the July 28 driver’s-window article. Its heading and editor’s note use inconsistent numbering, so the portfolio labels it “continued” rather than asserting a new part number.
 
 Midnight Glow adds the Deathmatch-style upper-right radial glow and diagonal panel gradients in the portfolio navy palette. The style menu retains every previous option. Contact inputs use white backgrounds and black text, and both Send message buttons share the same navy treatment in every style.
+
+Logo options replace the KB monogram with three original SVG marks: Cat (curiosity), Lighthouse (clarity), and Pen & Star (independent voice). The on-page Logo dropdown remembers a tab preview; admin Appearance → Logo style sets the default. Uploaded logos remain available as a fourth preview choice.

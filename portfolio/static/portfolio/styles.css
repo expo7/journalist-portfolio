@@ -54,3 +54,9 @@ section[id] { scroll-margin-top:100px; }
 @media(max-width:780px) { .corkboard-visual { justify-self:center; max-width:360px; } .style-switcher { flex-wrap:wrap; } }
 
 .corkboard-visual img { max-height:540px; object-fit:cover; object-position:top; }
+
+.logo-options { display:inline-flex; align-items:center; vertical-align:middle; margin-right:.7rem; }
+.logo-symbol { display:none; width:44px; height:44px; object-fit:contain; }
+body[data-logo="cat"] .logo-cat,body[data-logo="lighthouse"] .logo-lighthouse,body[data-logo="pen"] .logo-pen,body[data-logo="custom"] .logo-custom { display:block; }
+.style-switcher { flex-wrap:wrap; }
+@media(max-width:780px) { .logo-symbol { width:34px; height:34px; } }
