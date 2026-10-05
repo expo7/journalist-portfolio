@@ -101,7 +101,7 @@
           {% for story in stories %}
             <article class="story-card {% if story.is_featured %}story-featured{% endif %}" data-category="{{ story.category }}">
               <div class="story-art art-{{ story.artwork }}">
-                {% if story.image %}<img class="story-image" src="{{ story.image.url }}" alt="" loading="lazy" />{% else %}<img class="story-image" src="{% static 'portfolio/article-nebula.webp' %}" alt="" loading="lazy" />{% endif %}
+                {% if story.image %}<img class="story-image" src="{{ story.image.url }}" alt="" loading="lazy" />{% elif story.slug == "urgent-crisis-wild-horses" %}<img class="story-image" src="{% static 'portfolio/wild-horses.webp' %}" alt="Wild horses roaming open land" loading="lazy" />{% else %}<img class="story-image" src="{% static 'portfolio/article-nebula.webp' %}" alt="" loading="lazy" />{% endif %}
                 <span class="art-label">{% if story.topic %}{{ story.get_topic_display|upper }}{% else %}{{ story.get_category_display|upper }}{% endif %}</span>
                 {% if story.artwork == "housing" %}<span class="building building-a"></span><span class="building building-b"></span><span class="window-grid"></span>{% endif %}
                 {% if story.artwork == "water" %}<span class="waterline"></span><span class="sun"></span><span class="wave wave-one"></span><span class="wave wave-two"></span>{% endif %}
