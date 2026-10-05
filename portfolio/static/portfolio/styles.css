@@ -144,3 +144,4 @@ body #support-preview { margin:1rem auto 0; font-size:.8rem; opacity:.75; }
  body .cat-gallery { gap:.6rem; margin-block:1.25rem 1.5rem; }
  body .reader-support h2 { font-size:1.8rem; }
 }
+body .reader-support .button { justify-content:center; text-align:center; gap:.5rem; }
