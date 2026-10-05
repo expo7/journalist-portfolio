@@ -110,6 +110,7 @@
               <div class="story-meta"><span>{{ story.publication }}</span>{% if story.published_on %}<span>{{ story.published_on|date:"F Y" }}</span>{% endif %}</div>
               <h3><a href="{{ story.reading_url }}">{{ story.title }} <span aria-hidden="true">→</span></a></h3>
               <p>{{ story.deck }}</p>
+              {% if story.slug == "underwater-thermal-energy-storage" %}<a class="button button-outline" href="{% static 'portfolio/papers/underwater-thermal-energy-storage.pdf' %}">Read PDF <span aria-hidden="true">→</span></a>{% endif %}
             </article>
           {% empty %}
             <p class="empty-state">New reporting is on its way.</p>
