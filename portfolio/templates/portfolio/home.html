@@ -4,9 +4,9 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="{{ profile.name }} is an investigative journalist reporting on power, people, and the public record." />
+    <meta name="description" content="{{ profile.name }} is an investigative journalist exploring animal welfare, unexplained mysteries, and the natural world." />
     <title>{{ profile.name }} — Investigative Journalist</title>
-    <link rel="stylesheet" href="{% static 'portfolio/styles.css' %}?v=7" />
+    <link rel="stylesheet" href="{% static 'portfolio/styles.css' %}?v=8" />
     <link id="harbor-theme" rel="stylesheet" href="{% static 'portfolio/harbor.css' %}?v=1" {% if profile.theme == "original" %}disabled{% endif %} />
     <link id="rose-theme" rel="stylesheet" href="{% static 'portfolio/rose.css' %}?v=1" {% if profile.theme != "rose" %}disabled{% endif %} />
     <link id="midnight-theme" rel="stylesheet" href="{% static 'portfolio/midnight.css' %}?v=1" {% if profile.theme != "midnight" and profile.theme != "glow" %}disabled{% endif %} />
@@ -17,7 +17,7 @@
     <div class="style-switcher" aria-label="Website style">
       <label for="page-style">Style</label>
       <select id="page-style"><option value="original" {% if profile.theme == "original" %}selected{% endif %}>Paper Trail</option><option value="harbor" {% if profile.theme == "harbor" %}selected{% endif %}>Harbor Editorial</option><option value="rose" {% if profile.theme == "rose" %}selected{% endif %}>Harbor Rose</option><option value="midnight" {% if profile.theme == "midnight" %}selected{% endif %}>Midnight Blue</option><option value="glow" {% if profile.theme == "glow" %}selected{% endif %}>Midnight Glow</option></select>
-      <label for="hero-art">Hero image</label><select id="hero-art"><option value="lighthouse" {% if profile.hero_art == "lighthouse" %}selected{% endif %}>Lighthouse</option><option value="corkboard" {% if profile.hero_art == "corkboard" %}selected{% endif %}>Corkboard</option></select>
+      <label for="hero-art">Hero image</label><select id="hero-art"><option value="lighthouse" {% if profile.hero_art == "lighthouse" %}selected{% endif %}>Lighthouse</option><option value="corkboard" {% if profile.hero_art == "corkboard" %}selected{% endif %}>Corkboard</option><option value="portrait" {% if profile.hero_art == "portrait" %}selected{% endif %}>Kandace &amp; cat</option></select>
       <label for="page-logo">Logo</label><select id="page-logo"><option value="cat" {% if profile.logo_style == "cat" %}selected{% endif %}>Cat</option><option value="lighthouse" {% if profile.logo_style == "lighthouse" %}selected{% endif %}>Lighthouse</option><option value="pen" {% if profile.logo_style == "pen" %}selected{% endif %}>Pen &amp; Star</option>{% if profile.logo %}<option value="custom">Uploaded logo</option>{% endif %}</select>
       <label for="page-nav">Navigation</label><select id="page-nav"><option value="scrolling" {% if not profile.pin_nav %}selected{% endif %}>Scrolling</option><option value="pinned" {% if profile.pin_nav %}selected{% endif %}>Pinned</option></select>
     </div>
@@ -44,13 +44,14 @@
           <p class="intro">{{ profile.intro }}</p>
           {% if profile.publication_credit %}<p class="publication-credit">{{ profile.publication_credit }}{% if profile.publication_archive_url %} · <a href="{{ profile.publication_archive_url }}" target="_blank" rel="noopener noreferrer">Browse published work ↗</a>{% endif %}</p>{% endif %}
           <div class="hero-actions">
-            <a class="button button-dark" href="#work">Read the reporting <span aria-hidden="true">↓</span></a>
+            <a class="button button-dark" href="#work">Explore my work <span aria-hidden="true">↓</span></a>
             <a class="text-link" href="#about">Meet {{ profile.name }} <span aria-hidden="true">→</span></a>
           </div>
         </div>
+        <div class="portrait-visual"><img src="{% static 'portfolio/kandace-cat-hero.webp' %}" alt="Kandace holding a tabby cat beside a bookshelf" /></div>
         <div class="corkboard-visual"><img src="{% static 'portfolio/corkboard-hero.webp' %}" alt="An editorial corkboard with pinned notes, photographs and connecting threads" /></div>
         <div class="harbor-visual">
-          <div class="harbor-caption"><span>THE PUBLIC RECORD</span><span>INDEPENDENT / IN DEPTH</span></div>
+          <div class="harbor-caption"><span>CURIOSITY & COMPASSION</span><span>INDEPENDENT / IN DEPTH</span></div>
           <svg viewBox="0 0 480 500" role="img" aria-label="A lighthouse casting a beam across a quiet harbor">
             <defs><pattern id="harbor-lines" width="24" height="24" patternUnits="userSpaceOnUse"><path d="M0 24H24" stroke="#e9e4d8" stroke-opacity=".12"/></pattern></defs>
             <rect width="480" height="500" fill="#152e3c"/><rect width="480" height="500" fill="url(#harbor-lines)"/>
@@ -63,34 +64,34 @@
             <g fill="none" stroke="#eee8dc" stroke-opacity=".4"><path d="M20 436Q90 420 150 436T300 436T470 436M0 466Q70 450 150 466T310 466T480 466"/></g>
             <path d="M109 390H263" stroke="#c9ad72" stroke-width="3"/>
           </svg>
-          <div class="harbor-caption harbor-bottom"><span>A CLEARER VIEW.</span><span>POWER · PEOPLE · EVIDENCE</span></div>
+          <div class="harbor-caption harbor-bottom"><span>A CLEARER VIEW.</span><span>ANIMALS · MYSTERIES · SCIENCE</span></div>
         </div>
         <div class="hero-visual" aria-label="A collage of newspaper clippings and field notes">
           <div class="tape tape-one"></div>
           <div class="paper paper-main">
-            <span class="paper-kicker">THE CITY LEDGER</span>
-            <strong>WHO OWNS<br />THE BLOCK?</strong>
+            <span class="paper-kicker">NAVAJO-HOPI OBSERVER</span>
+            <strong>MYSTERIES<br />ON THE RESERVATION</strong>
             <span class="paper-rule"></span>
             <span class="paper-lines"></span>
-            <span class="paper-date">SUNDAY / 06.16.24</span>
+            <span class="paper-date">REPORTING / RESEARCH</span>
           </div>
           <div class="paper paper-note">
-            <span>Records request<br />#0427</span>
-            <strong>FOLLOW<br />THE MONEY</strong>
+            <span>Questions from<br />the natural world</span>
+            <strong>FOLLOW<br />CURIOSITY</strong>
             <i></i><i></i><i></i>
           </div>
           <div class="stamp">PUBLIC<br />INTEREST<br /><b>PRESS</b></div>
-          <div class="scribble">documents<br />tell stories</div>
+          <div class="scribble">keep asking<br />questions</div>
         </div>
       </section>
 
       <section class="ticker" aria-label="Reporting areas">
-        <div class="ticker-track"><span>PUBLIC RECORDS</span><b>✳</b><span>ACCOUNTABILITY</span><b>✳</b><span>COMMUNITIES</span><b>✳</b><span>PUBLIC RECORDS</span><b>✳</b><span>ACCOUNTABILITY</span><b>✳</b><span>COMMUNITIES</span><b>✳</b></div>
+        <div class="ticker-track"><span>ANIMAL WELFARE</span><b>✳</b><span>UNEXPLAINED MYSTERIES</span><b>✳</b><span>THE NATURAL WORLD</span><b>✳</b><span>ANIMAL WELFARE</span><b>✳</b><span>UNEXPLAINED MYSTERIES</span><b>✳</b><span>THE NATURAL WORLD</span><b>✳</b></div>
       </section>
 
       <section id="work" class="work section">
         <div class="section-heading">
-          <div><p class="eyebrow">Selected work</p><h2>Stories with receipts.</h2></div>
+          <div><p class="eyebrow">Selected work</p><h2>Reporting &amp; research.</h2></div>
           <div class="filters" aria-label="Filter reporting">
             <button class="filter is-active" type="button" data-filter="all">All work</button>
             <button class="filter" type="button" data-filter="investigations">Investigations</button>
@@ -186,6 +187,6 @@
       <p class="copyright">© <span id="year"></span> {{ profile.name }}</p>
     </footer>
     <script src="{% static 'portfolio/script.js' %}?v=2"></script>
-    <script src="{% static 'portfolio/theme.js' %}?v=7"></script>
+    <script src="{% static 'portfolio/theme.js' %}?v=8"></script>
   </body>
 </html>

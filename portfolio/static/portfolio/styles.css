@@ -76,3 +76,9 @@ body .about-portrait { width:100%; max-width:280px; height:280px; justify-self:c
 .quote-pair blockquote { font-size:clamp(1.5rem,2.5vw,2.3rem); line-height:1.35; letter-spacing:-.025em; margin-bottom:1rem; }
 .quote-pair figcaption { font-size:.9rem; color:var(--gold); }
 @media(max-width:780px) { .quote-pair { grid-template-columns:1fr; gap:2rem; } }
+
+.portrait-visual { display:none; width:100%; max-width:460px; justify-self:end; }
+.portrait-visual img { display:block; width:100%; height:auto; border-radius:12px; }
+.hero-art-portrait .portrait-visual { display:block; }
+.hero-art-portrait .harbor-visual,.hero-art-portrait .hero-visual { display:none; }
+@media(max-width:780px) { .portrait-visual { justify-self:center; max-width:360px; } }
