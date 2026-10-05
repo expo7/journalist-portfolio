@@ -119,3 +119,13 @@ body .hero h1 { font-size:clamp(2.8rem,4.5vw,4.8rem); line-height:1.06; letter-s
  body .hero { padding-block:2rem 2.5rem; gap:1.75rem; }
  body .hero h1 { font-size:clamp(2.3rem,8.5vw,3.6rem); line-height:1.06; }
 }
+
+/* A compact portrait column rather than a large empty image track. */
+body .about { grid-template-columns:280px minmax(0,1fr); gap:clamp(2rem,4vw,4rem); align-items:start; max-width:1120px; margin-inline:auto; padding-block:3.5rem; }
+body .about-copy h2 { font-size:clamp(1.9rem,3vw,2.8rem); line-height:1.12; letter-spacing:-.04em; margin-bottom:1rem; }
+body .about-copy > p:not(.eyebrow) { max-width:none; font-size:1rem; line-height:1.65; margin:1rem 0; }
+body .about-details { padding:1rem 0; margin:1.25rem 0; }
+@media(max-width:780px) {
+ body .about { grid-template-columns:1fr; gap:1.5rem; padding-block:2.5rem; }
+ body .about-copy h2 { font-size:2rem; }
+}
