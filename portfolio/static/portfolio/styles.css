@@ -129,3 +129,18 @@ body .about-details { padding:1rem 0; margin:1.25rem 0; }
  body .about { grid-template-columns:1fr; gap:1.5rem; padding-block:2.5rem; }
  body .about-copy h2 { font-size:2rem; }
 }
+
+/* Give the personal photos a separate, quieter chapter. */
+body .about { align-items:center; }
+body .reader-support { border-block:1px solid var(--line); background:linear-gradient(135deg,color-mix(in srgb,var(--gold) 8%,var(--cream)),var(--cream)); text-align:center; padding-block:3rem; }
+body .reader-support h2 { font-size:clamp(1.8rem,2.8vw,2.6rem); line-height:1.15; letter-spacing:-.04em; margin-bottom:1.5rem; }
+body .cat-gallery { max-width:720px; margin:1.5rem auto 2rem; gap:1.25rem; }
+body .cat-gallery img { aspect-ratio:3/4; object-fit:cover; border:1px solid var(--line); }
+body .reader-support .button { margin-inline:auto; }
+body #support-preview { margin:1rem auto 0; font-size:.8rem; opacity:.75; }
+@media(max-width:780px) {
+ body .about { align-items:start; }
+ body .reader-support { padding:2.5rem 1.25rem; }
+ body .cat-gallery { gap:.6rem; margin-block:1.25rem 1.5rem; }
+ body .reader-support h2 { font-size:1.8rem; }
+}
