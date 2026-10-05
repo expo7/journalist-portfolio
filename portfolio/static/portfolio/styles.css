@@ -111,3 +111,11 @@ body .about-portrait { width:100%; max-width:280px; height:280px; justify-self:c
  body .style-switcher { gap:.5rem; padding:.75rem 1rem; }
  body .style-switcher select { max-width:100%; }
 }
+
+/* Keep the introduction in proportion at laptop widths. */
+body .hero { gap:clamp(1.5rem,3vw,3rem); padding-block:clamp(2.5rem,5vw,4.5rem); }
+body .hero h1 { font-size:clamp(2.8rem,4.5vw,4.8rem); line-height:1.06; letter-spacing:-.045em; }
+@media(max-width:780px) {
+ body .hero { padding-block:2rem 2.5rem; gap:1.75rem; }
+ body .hero h1 { font-size:clamp(2.3rem,8.5vw,3.6rem); line-height:1.06; }
+}
