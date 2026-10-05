@@ -35,7 +35,7 @@
   }
   const artSelect = document.querySelector('#hero-art');
   if (artSelect) {
-    const frames = ['.harbor-visual', '.corkboard-visual', '.portrait-visual', '.observer-visual'].map(selector => document.querySelector(selector));
+    const frames = ['.harbor-visual', '.corkboard-visual', '.portrait-visual', '.observer-visual', '.poolcat-visual'].map(selector => document.querySelector(selector));
     const pause = document.querySelector('#hero-pause');
     const reduced = window.matchMedia('(prefers-reduced-motion: reduce)');
     let timer, index = 0, paused = reduced.matches;
@@ -53,7 +53,7 @@
     }
     function applyArt(value) {
       stop();
-      document.body.classList.remove('hero-art-lighthouse', 'hero-art-corkboard', 'hero-art-portrait', 'hero-art-observer', 'hero-art-rotate');
+      document.body.classList.remove('hero-art-lighthouse', 'hero-art-corkboard', 'hero-art-portrait', 'hero-art-observer', 'hero-art-rotate', 'hero-art-poolcat');
       document.body.classList.add('hero-art-' + value);
       artSelect.value = value;
       pause.hidden = value !== 'rotate';
@@ -64,7 +64,7 @@
     pause.addEventListener('click', () => { paused = !paused; pause.textContent = paused ? 'Play images' : 'Pause images'; start(); });
     document.addEventListener('visibilitychange', start);
     reduced.addEventListener('change', () => { if (reduced.matches) { paused = true; pause.textContent = 'Play images'; stop(); } });
-    try { const savedArt = sessionStorage.getItem('portfolio-preview-art'); if (['lighthouse', 'corkboard', 'portrait', 'observer', 'rotate'].includes(savedArt)) applyArt(savedArt); } catch {}
+    try { const savedArt = sessionStorage.getItem('portfolio-preview-art'); if (['lighthouse', 'corkboard', 'portrait', 'observer', 'poolcat', 'rotate'].includes(savedArt)) applyArt(savedArt); } catch {}
     artSelect.addEventListener('change', () => { applyArt(artSelect.value); try { sessionStorage.setItem('portfolio-preview-art', artSelect.value); } catch {} });
   }
   select.addEventListener("change", () => {
