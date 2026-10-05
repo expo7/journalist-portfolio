@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="{{ profile.name }} is an investigative journalist reporting on power, people, and the public record." />
     <title>{{ profile.name }} — Investigative Journalist</title>
-    <link rel="stylesheet" href="{% static 'portfolio/styles.css' %}?v=6" />
+    <link rel="stylesheet" href="{% static 'portfolio/styles.css' %}?v=7" />
     <link id="harbor-theme" rel="stylesheet" href="{% static 'portfolio/harbor.css' %}?v=1" {% if profile.theme == "original" %}disabled{% endif %} />
     <link id="rose-theme" rel="stylesheet" href="{% static 'portfolio/rose.css' %}?v=1" {% if profile.theme != "rose" %}disabled{% endif %} />
     <link id="midnight-theme" rel="stylesheet" href="{% static 'portfolio/midnight.css' %}?v=1" {% if profile.theme != "midnight" and profile.theme != "glow" %}disabled{% endif %} />
@@ -118,11 +118,12 @@
         <p id="filter-message" class="filter-message" aria-live="polite"></p>
       </section>
 
-      <section class="statement">
-        <p class="eyebrow">The beat</p>
-        <blockquote>“Good reporting begins with listening — and ends with the evidence in plain sight.”</blockquote>
-        <a class="text-link" href="#about">How I report <span aria-hidden="true">→</span></a>
-      </section>
+      {% if profile.favorite_quote_one or profile.favorite_quote_two %}<section class="statement favorite-quotes">
+        <p class="eyebrow">Favorite quotes</p><div class="quote-pair">
+        {% if profile.favorite_quote_one %}<figure><blockquote>“{{ profile.favorite_quote_one }}”</blockquote><figcaption>— {{ profile.favorite_quote_one_author }}</figcaption></figure>{% endif %}
+        {% if profile.favorite_quote_two %}<figure><blockquote>“{{ profile.favorite_quote_two }}”</blockquote><figcaption>— {{ profile.favorite_quote_two_author }}</figcaption></figure>{% endif %}
+        </div>
+      </section>{% endif %}
 
       <section id="about" class="about section">
         <div class="about-portrait">{% if profile.headshot %}<img src="{{ profile.headshot.url }}" alt="Portrait of {{ profile.name }}" />{% else %}<img class="real-cat-portrait" src="{% static 'portfolio/cats-1.webp' %}" alt="Kandace’s two black cats outdoors" loading="lazy" />{% endif %}<div class="portrait-caption">{% if profile.headshot %}{{ profile.name|upper }}<br />INDEPENDENT JOURNALIST{% else %}A LITTLE COMPANY<br />KANDACE’S CATS{% endif %}</div></div>

@@ -69,3 +69,10 @@ body[data-nav="pinned"] .site-header { box-shadow:0 4px 16px rgba(0,0,0,.12); }
 .cat-gallery img { display:block; width:100%; height:auto; border-radius:8px; }
 .about-portrait .real-cat-portrait { object-position:50% 35%; }
 @media(max-width:580px) { .cat-gallery { gap:.5rem; } }
+
+body .about-portrait { width:100%; max-width:280px; height:280px; justify-self:center; }
+.quote-pair { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:3rem; }
+.quote-pair figure { margin:0; }
+.quote-pair blockquote { font-size:clamp(1.5rem,2.5vw,2.3rem); line-height:1.35; letter-spacing:-.025em; margin-bottom:1rem; }
+.quote-pair figcaption { font-size:.9rem; color:var(--gold); }
+@media(max-width:780px) { .quote-pair { grid-template-columns:1fr; gap:2rem; } }

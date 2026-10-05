@@ -43,6 +43,7 @@ class SiteProfileAdmin(admin.ModelAdmin):
         ("Reader support", {"fields": ("show_support", "support_label", "support_url")}),
         ("Publication credit", {"fields": ("publication_credit", "publication_archive_url")}),
         ("Identity and hero", {"fields": ("name", "role", "hero_headline", "hero_emphasis", "intro")}),
+        ("Favorite quotes", {"fields": ("favorite_quote_one", "favorite_quote_one_author", "favorite_quote_two", "favorite_quote_two_author")}),
         ("About", {"fields": ("about_heading", "bio", "location", "beats")}),
         ("Contact", {"fields": ("contact_email", "tip_email", "footer_tagline")}),
     )
