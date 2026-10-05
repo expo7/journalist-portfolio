@@ -11,10 +11,10 @@ class Command(BaseCommand):
     def handle(self, *args, **options):
         profile = SiteProfile.objects.get(pk=1)
         profile.theme = "midnight"
-        profile.location = "Flagstaff, AZ"
+        profile.location = "Arizona"
         profile.beats = "Animal rights · UFOs & mysteries · Wildlife & medicinal plants"
         profile.intro = "Independent reporting on animal rights, unexplained mysteries, and the natural world."
-        profile.bio = "I am Kandace Baez, an independent journalist based in Flagstaff, Arizona. My interests include animal rights, UFOs and unexplained mysteries, and wildlife and medicinal plants."
+        profile.bio = "I am Kandace Baez, an independent journalist based in Arizona. My interests include animal rights, UFOs and unexplained mysteries, and wildlife and medicinal plants."
         profile.publication_archive_url = ARCHIVE_URL
         profile.publication_credit = "Work published in the Navajo-Hopi Observer"
         profile.show_field_notes = False
