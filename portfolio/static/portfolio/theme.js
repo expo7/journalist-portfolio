@@ -35,12 +35,36 @@
   }
   const artSelect = document.querySelector('#hero-art');
   if (artSelect) {
+    const frames = ['.harbor-visual', '.corkboard-visual', '.portrait-visual', '.observer-visual'].map(selector => document.querySelector(selector));
+    const pause = document.querySelector('#hero-pause');
+    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)');
+    let timer, index = 0, paused = reduced.matches;
+    function stop() { clearInterval(timer); }
+    function advance() {
+      frames[index].classList.remove('hero-frame-active');
+      frames[index].setAttribute('aria-hidden', 'true');
+      index = (index + 1) % frames.length;
+      frames[index].classList.add('hero-frame-active');
+      frames[index].setAttribute('aria-hidden', 'false');
+    }
+    function start() {
+      stop();
+      if (artSelect.value === 'rotate' && !paused && !document.hidden) timer = setInterval(advance, 6000);
+    }
     function applyArt(value) {
-      document.body.classList.remove('hero-art-lighthouse', 'hero-art-corkboard', 'hero-art-portrait', 'hero-art-observer');
+      stop();
+      document.body.classList.remove('hero-art-lighthouse', 'hero-art-corkboard', 'hero-art-portrait', 'hero-art-observer', 'hero-art-rotate');
       document.body.classList.add('hero-art-' + value);
       artSelect.value = value;
+      pause.hidden = value !== 'rotate';
+      frames.forEach((frame, i) => { frame.classList.toggle('hero-frame-active', i === index); frame.setAttribute('aria-hidden', value === 'rotate' && i !== index ? 'true' : 'false'); });
+      pause.textContent = paused ? 'Play images' : 'Pause images';
+      start();
     }
-    try { const savedArt = sessionStorage.getItem('portfolio-preview-art'); if (['lighthouse', 'corkboard', 'portrait', 'observer'].includes(savedArt)) applyArt(savedArt); } catch {}
+    pause.addEventListener('click', () => { paused = !paused; pause.textContent = paused ? 'Play images' : 'Pause images'; start(); });
+    document.addEventListener('visibilitychange', start);
+    reduced.addEventListener('change', () => { if (reduced.matches) { paused = true; pause.textContent = 'Play images'; stop(); } });
+    try { const savedArt = sessionStorage.getItem('portfolio-preview-art'); if (['lighthouse', 'corkboard', 'portrait', 'observer', 'rotate'].includes(savedArt)) applyArt(savedArt); } catch {}
     artSelect.addEventListener('change', () => { applyArt(artSelect.value); try { sessionStorage.setItem('portfolio-preview-art', artSelect.value); } catch {} });
   }
   select.addEventListener("change", () => {
