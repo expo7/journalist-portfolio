@@ -145,3 +145,4 @@ body #support-preview { margin:1rem auto 0; font-size:.8rem; opacity:.75; }
  body .reader-support h2 { font-size:1.8rem; }
 }
 body .reader-support .button { justify-content:center; text-align:center; gap:.5rem; }
+body .reader-support h2 { width:100%; max-width:none; margin-inline:auto; text-align:center; }
