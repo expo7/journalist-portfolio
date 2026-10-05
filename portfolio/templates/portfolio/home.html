@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="{{ profile.name }} is an investigative journalist exploring animal welfare, unexplained mysteries, and the natural world." />
     <title>{{ profile.name }} — Investigative Journalist</title>
-    <link rel="stylesheet" href="{% static 'portfolio/styles.css' %}?v=8" />
+    <link rel="stylesheet" href="{% static 'portfolio/styles.css' %}?v=9" />
     <link id="harbor-theme" rel="stylesheet" href="{% static 'portfolio/harbor.css' %}?v=1" {% if profile.theme == "original" %}disabled{% endif %} />
     <link id="rose-theme" rel="stylesheet" href="{% static 'portfolio/rose.css' %}?v=1" {% if profile.theme != "rose" %}disabled{% endif %} />
     <link id="midnight-theme" rel="stylesheet" href="{% static 'portfolio/midnight.css' %}?v=1" {% if profile.theme != "midnight" and profile.theme != "glow" %}disabled{% endif %} />
@@ -17,7 +17,7 @@
     <div class="style-switcher" aria-label="Website style">
       <label for="page-style">Style</label>
       <select id="page-style"><option value="original" {% if profile.theme == "original" %}selected{% endif %}>Paper Trail</option><option value="harbor" {% if profile.theme == "harbor" %}selected{% endif %}>Harbor Editorial</option><option value="rose" {% if profile.theme == "rose" %}selected{% endif %}>Harbor Rose</option><option value="midnight" {% if profile.theme == "midnight" %}selected{% endif %}>Midnight Blue</option><option value="glow" {% if profile.theme == "glow" %}selected{% endif %}>Midnight Glow</option></select>
-      <label for="hero-art">Hero image</label><select id="hero-art"><option value="lighthouse" {% if profile.hero_art == "lighthouse" %}selected{% endif %}>Lighthouse</option><option value="corkboard" {% if profile.hero_art == "corkboard" %}selected{% endif %}>Corkboard</option><option value="portrait" {% if profile.hero_art == "portrait" %}selected{% endif %}>Kandace &amp; cat</option></select>
+      <label for="hero-art">Hero image</label><select id="hero-art"><option value="lighthouse" {% if profile.hero_art == "lighthouse" %}selected{% endif %}>Lighthouse</option><option value="corkboard" {% if profile.hero_art == "corkboard" %}selected{% endif %}>Corkboard</option><option value="portrait" {% if profile.hero_art == "portrait" %}selected{% endif %}>Kandace &amp; cat</option><option value="observer" {% if profile.hero_art == "observer" %}selected{% endif %}>Observer photo</option></select>
       <label for="page-logo">Logo</label><select id="page-logo"><option value="cat" {% if profile.logo_style == "cat" %}selected{% endif %}>Cat</option><option value="lighthouse" {% if profile.logo_style == "lighthouse" %}selected{% endif %}>Lighthouse</option><option value="pen" {% if profile.logo_style == "pen" %}selected{% endif %}>Pen &amp; Star</option>{% if profile.logo %}<option value="custom">Uploaded logo</option>{% endif %}</select>
       <label for="page-nav">Navigation</label><select id="page-nav"><option value="scrolling" {% if not profile.pin_nav %}selected{% endif %}>Scrolling</option><option value="pinned" {% if profile.pin_nav %}selected{% endif %}>Pinned</option></select>
     </div>
@@ -48,6 +48,7 @@
             <a class="text-link" href="#about">Meet {{ profile.name }} <span aria-hidden="true">→</span></a>
           </div>
         </div>
+        <div class="observer-visual"><img src="{% static 'portfolio/observer-hero.webp' %}" alt="Two people holding a Navajo-Hopi Observer newspaper in front of a vintage printing press" /></div>
         <div class="portrait-visual"><img src="{% static 'portfolio/kandace-cat-hero.webp' %}" alt="Kandace holding a tabby cat beside a bookshelf" /></div>
         <div class="corkboard-visual"><img src="{% static 'portfolio/corkboard-hero.webp' %}" alt="An editorial corkboard with pinned notes, photographs and connecting threads" /></div>
         <div class="harbor-visual">
@@ -187,6 +188,6 @@
       <p class="copyright">© <span id="year"></span> {{ profile.name }}</p>
     </footer>
     <script src="{% static 'portfolio/script.js' %}?v=2"></script>
-    <script src="{% static 'portfolio/theme.js' %}?v=8"></script>
+    <script src="{% static 'portfolio/theme.js' %}?v=9"></script>
   </body>
 </html>

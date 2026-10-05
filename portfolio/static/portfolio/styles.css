@@ -82,3 +82,9 @@ body .about-portrait { width:100%; max-width:280px; height:280px; justify-self:c
 .hero-art-portrait .portrait-visual { display:block; }
 .hero-art-portrait .harbor-visual,.hero-art-portrait .hero-visual { display:none; }
 @media(max-width:780px) { .portrait-visual { justify-self:center; max-width:360px; } }
+
+.observer-visual { display:none; width:100%; max-width:420px; justify-self:end; }
+.observer-visual img { display:block; width:100%; height:auto; border-radius:12px; }
+.hero-art-observer .observer-visual { display:block; }
+.hero-art-observer .harbor-visual,.hero-art-observer .hero-visual { display:none; }
+@media(max-width:780px) { .observer-visual { justify-self:center; max-width:340px; } }

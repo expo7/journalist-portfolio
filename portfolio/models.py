@@ -92,7 +92,7 @@ class SiteProfile(models.Model):
     logo = models.ImageField(upload_to="logos/", blank=True, help_text="Optional custom logo; otherwise the selected illustrated logo is used.")
     publication_credit = models.CharField(max_length=180, blank=True, default="Work published in the Navajo-Hopi Observer")
     publication_archive_url = models.URLField(blank=True)
-    hero_art = models.CharField(max_length=20, choices=[("lighthouse", "Lighthouse"), ("corkboard", "Corkboard"), ("portrait", "Kandace & cat")], default="lighthouse")
+    hero_art = models.CharField(max_length=20, choices=[("lighthouse", "Lighthouse"), ("corkboard", "Corkboard"), ("portrait", "Kandace & cat"), ("observer", "Observer photo")], default="lighthouse")
     name = models.CharField(max_length=100, default="Kandace Baez")
     role = models.CharField(max_length=120, default="Independent investigative reporting")
     hero_headline = models.CharField(max_length=100, default="Follow the")

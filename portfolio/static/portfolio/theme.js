@@ -36,11 +36,11 @@
   const artSelect = document.querySelector('#hero-art');
   if (artSelect) {
     function applyArt(value) {
-      document.body.classList.remove('hero-art-lighthouse', 'hero-art-corkboard', 'hero-art-portrait');
+      document.body.classList.remove('hero-art-lighthouse', 'hero-art-corkboard', 'hero-art-portrait', 'hero-art-observer');
       document.body.classList.add('hero-art-' + value);
       artSelect.value = value;
     }
-    try { const savedArt = sessionStorage.getItem('portfolio-preview-art'); if (['lighthouse', 'corkboard', 'portrait'].includes(savedArt)) applyArt(savedArt); } catch {}
+    try { const savedArt = sessionStorage.getItem('portfolio-preview-art'); if (['lighthouse', 'corkboard', 'portrait', 'observer'].includes(savedArt)) applyArt(savedArt); } catch {}
     artSelect.addEventListener('change', () => { applyArt(artSelect.value); try { sessionStorage.setItem('portfolio-preview-art', artSelect.value); } catch {} });
   }
   select.addEventListener("change", () => {
